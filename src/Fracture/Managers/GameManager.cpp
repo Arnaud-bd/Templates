@@ -19,16 +19,15 @@ SceneManager* GameManager::GetSceneManager()
 
 int GameManager::Loop()
 {
-
 	sf::RenderWindow mWindow;
-
-	// création de la fenêtre
-	mWindow.create(sf::VideoMode(1188, 1000), "Poop Them Up", sf::Style::Close);
+	mWindow.create(sf::VideoMode(1188, 1000), "Fracture", sf::Style::Close);
 	mWindow.setPosition(sf::Vector2i(366, 0));
 
+	
 	while (true)
 	{
-
+		m_SceneManager->GetCurrentScene()->Update();
+		m_SceneManager->GetCurrentScene()->Draw();
 	}
 
 	return 0;
