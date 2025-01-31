@@ -1,7 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "SceneManager.h"
-#include "../GameComponents/Scene.hpp"
 
 class GameManager
 {

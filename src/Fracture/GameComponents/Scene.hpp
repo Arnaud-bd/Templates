@@ -1,7 +1,8 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "../Components/Component.h"
+
+class Component;
 
 class Scene : public sf::Drawable
 {

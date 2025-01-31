@@ -2,6 +2,7 @@
 #include <vector>
 #include <cstdint>
 #include <iostream>
+#include "../Managers/GameManager.h"
 
 class Component
 {
@@ -24,13 +25,13 @@ public:
 template<typename _type>
 _type* Component::Add(Component* _componant)
 {
-	GameManager.GetInstance().GetCurrentScene().Add(_componant);
+	GameManager::GetInstance().GetCurrentScene().Add(_componant);
 }
 
 template<typename _type>
 _type* Component::Get()
 {
-	std::vector<_type*> ComponentList = GameManager.GetInstance().GetCurrentScene().GetAll(); 
+	std::vector<_type*> ComponentList = GameManager::GetInstance().GetCurrentScene().GetAll(); 
 	for (int i = 0; i < ComponentList.size(); ++i)
 	{
 		if (_type* result = dynamic_cast<_type*>(ComponentList[i]))
@@ -44,7 +45,7 @@ _type* Component::Get()
 template<typename _type>
 inline _type* Component::GetAll()
 {
-	std::vector<_type*> ComponentList = GameManager.GetInstance().GetCurrentScene().GetAll(); 
+	std::vector<_type*> ComponentList = GameManager::GetInstance().GetCurrentScene().GetAll(); 
 	std::vector<_type*> resultList; 
 	for (int i = 0; i < ComponentList.size(); ++i)
 	{
