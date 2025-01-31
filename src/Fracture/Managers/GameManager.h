@@ -10,5 +10,6 @@ class GameManager
 
 public:
 	static GameManager* GetInstance();
+
 };
 
