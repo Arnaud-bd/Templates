@@ -2,10 +2,20 @@
 
 GameManager* GameManager::GetInstance()
 {
-	if (mInstance == nullptr)
+	if (m_Instance == nullptr)
 	{
-		mInstance = new GameManager();
+		m_Instance = new GameManager();
 	}
 
-	return mInstance;
+	return m_Instance;
+}
+
+SceneManager* GameManager::GetSceneManager()
+{
+	return m_SceneManager;
+}
+
+int GameManager::Loop()
+{
+	return 0;
 }

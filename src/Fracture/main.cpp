@@ -1,11 +1,9 @@
-
 #include "main.h"
-
+#include "Managers/GameManager.h"
 int main()
 {
-#ifdef _DEBUG
-	_CrtDumpMemoryLeaks();
-#endif
+	GameManager gameManager;
+	gameManager.GetInstance();
+	gameManager.Loop();
 
-	return 0;
 }
