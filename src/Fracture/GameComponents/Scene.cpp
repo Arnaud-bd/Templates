@@ -23,6 +23,8 @@ void Scene::Update()
 	}
 }
 
-void Scene::Draw()
+void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+
 }
+

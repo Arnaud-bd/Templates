@@ -7,5 +7,6 @@ class SceneManager
 public:
 
 	Scene* GetCurrentScene();
+	void SetCurrentScene(Scene* CurrentScene);
 };
 

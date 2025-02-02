@@ -17,7 +17,7 @@ public:
 	uint64_t CreateEntity();
 	void Add(Component* _component);
 	void Update();
-	void Draw();
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 };
 
 template<typename _type>

@@ -23,11 +23,14 @@ int GameManager::Loop()
 	mWindow.create(sf::VideoMode(1188, 1000), "Fracture", sf::Style::Close);
 	mWindow.setPosition(sf::Vector2i(366, 0));
 
-	
+	m_SceneManager = new SceneManager;
+	Scene* s = new Scene;
+	m_SceneManager->SetCurrentScene(s);
+
 	while (true)
 	{
 		m_SceneManager->GetCurrentScene()->Update();
-		m_SceneManager->GetCurrentScene()->Draw();
+		//m_SceneManager->GetCurrentScene()->draw(); 
 	}
 
 	return 0;
