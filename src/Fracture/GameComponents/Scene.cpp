@@ -14,17 +14,12 @@ Transform2D* Scene::CreateEntity(sf::Vector2f _position, float _scale, float _ro
 	return &transform;
 }
 
-void Scene::Add(Component* _component)
-{
-	m_ComponentsList.push_back(_component);
-}
-
-void Scene::Update()
+void Scene::Update(float _deltaTime)
 {
 	for (int i = 0; i < m_ComponentsList.size(); i++)
 	{
 		if (Behaviour* b = dynamic_cast<Behaviour*>(m_ComponentsList[i]))
-			b->Update();
+			b->Update(_deltaTime);
 	}
 }
 

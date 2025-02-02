@@ -27,9 +27,14 @@ int GameManager::Loop()
 	Scene* s = new Scene;
 	m_SceneManager->SetCurrentScene(s);
 
+	sf::Clock clock;
+
 	while (true)
 	{
-		m_SceneManager->GetCurrentScene()->Update();
+		sf::Time elapsed = clock.restart();
+		float deltaTime = elapsed.asSeconds();
+
+		m_SceneManager->GetCurrentScene()->Update(deltaTime);
 		//m_SceneManager->GetCurrentScene()->draw(); 
 	}
 

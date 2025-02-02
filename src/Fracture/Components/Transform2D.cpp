@@ -6,3 +6,11 @@ Transform2D::Transform2D(sf::Vector2f _position, float _scale, float _rotation)
 	m_Scale = _scale;
 	m_Rotation = _rotation;
 }
+
+void Transform2D::Awake()
+{
+}
+
+void Transform2D::Start()
+{
+}

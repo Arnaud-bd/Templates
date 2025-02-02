@@ -12,7 +12,7 @@ class Component
 public:
 
 	template <typename _type>
-	_type* Add(Component* _componant);
+	_type* Add();
 	template <typename _type>
 	_type* Get();
 	template <typename _type>
@@ -23,9 +23,9 @@ public:
 };
 
 template<typename _type>
-_type* Component::Add(Component* _componant)
+_type* Component::Add()
 {
-	GameManager::GetInstance().GetCurrentScene().Add(_componant);
+	return GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->Add<_type>();
 }
 
 template<typename _type>
