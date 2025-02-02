@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 
 class Component;
 
-class Scene : public sf::Drawable
+class Scene
 {
 	std::vector<Component*> m_Components;
 
@@ -17,7 +17,7 @@ public:
 	uint64_t CreateEntity();
 	void Add(Component* _component);
 	void Update();
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void Drawing(sf::RenderWindow* _render);
 };
 
 template<typename _type>
