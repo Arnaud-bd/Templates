@@ -2,11 +2,12 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
+class Transform2D;
 class Component;
 
 class Scene : public sf::Drawable
 {
-	std::vector<Component*> m_Components;
+	std::vector<Component*> m_ComponentsList;
 
 public:
 	Scene();
@@ -14,7 +15,7 @@ public:
 	template <typename _type>
 	std::vector<_type*> GetAll();
 
-	uint64_t CreateEntity();
+	Transform2D* CreateEntity(sf::Vector2f _position, float _scale, float _rotation);
 	void Add(Component* _component);
 	void Update();
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -25,9 +26,9 @@ inline std::vector<_type*> Scene::GetAll()
 {
 	std::vector<_type*> vect;
 	
-	for (int i = 0; i < m_Components.size(); i++)
+	for (int i = 0; i < m_ComponentsList.size(); i++)
 	{
-		_type* me = dynamic_cast<_type*>(m_Components[i]);
+		_type* me = dynamic_cast<_type*>(m_ComponentsList[i]);
 
 		if (me)
 			vect.push_back(me);
