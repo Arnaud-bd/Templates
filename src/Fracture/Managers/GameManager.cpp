@@ -29,9 +29,6 @@ int GameManager::Loop()
     m_SceneManager->SetCurrentScene(s);
     s->Init();
 
-    /*SpriteRender* spren = Add<SpriteRender>();
-    spren->Init("..\\..\\..\\res\\Sprite\\ballBlue.png");*/
-
 	sf::Clock clock;
 
     std::vector<Component*> vect = m_SceneManager->GetCurrentScene()->GetAll<Component>();
