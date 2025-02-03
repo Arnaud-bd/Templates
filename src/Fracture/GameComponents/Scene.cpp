@@ -7,8 +7,9 @@ Scene::Scene()
 
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, float _scale, float _rotation)
 {
-	Transform2D transform = {_position, _scale, _rotation};
-	
+	Transform2D transform;
+	transform.Init(_position, _scale, _rotation);
+
 	m_ComponentsList.push_back(&transform);
 
 	return &transform;
