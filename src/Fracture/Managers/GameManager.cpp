@@ -27,9 +27,10 @@ int GameManager::Loop()
     m_SceneManager = new SceneManager();
     Scene* s = new Scene();
     m_SceneManager->SetCurrentScene(s);
+    s->Init();
 
-    SpriteRender* spren = s->Add<SpriteRender>();
-    spren->Init("..\\..\\..\\res\\Sprite\\ballBlue.png");
+    /*SpriteRender* spren = Add<SpriteRender>();
+    spren->Init("..\\..\\..\\res\\Sprite\\ballBlue.png");*/
 
 	sf::Clock clock;
 
@@ -60,8 +61,9 @@ int GameManager::Loop()
         m_SceneManager->GetCurrentScene()->Drawing(&mWindow);
     }
 
+    delete s;
     delete m_SceneManager;  
-    delete s;  
+
 
     return 0;
 }

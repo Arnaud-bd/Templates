@@ -19,14 +19,20 @@ public:
 	template <typename _type>
 	_type* GetAll();
 	
+	uint64_t GetID();
+	void SetID(uint64_t _ID);
 	virtual void Awake() = 0;
 	virtual void Start() = 0;
 };
 
 template<typename _type>
-_type* Component::Add()
+inline _type* Component::Add()
 {
-	return GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->Add<_type>();
+	_type* component = new _type();
+	component->m_ID = m_ID;
+	GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->AddComponent(component);
+	component->Awake();
+	return component;
 }
 
 template<typename _type>
