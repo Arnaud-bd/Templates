@@ -30,13 +30,13 @@ void Scene::AddComponent(Component* _component)
 
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, float _scale, float _rotation)
 {
-	Transform2D transform;
-	transform.Init(_position, _scale, _rotation, m_ComponentsList.size()+1);
+	Transform2D* transform = new Transform2D();
+	transform->Init(_position, _scale, _rotation, m_ComponentsList.size()+1);
 
-	transform.Awake();
-	m_ComponentsList.push_back(&transform);
+	transform->Awake();
+	m_ComponentsList.push_back(transform);
 
-	return &transform;
+	return transform;
 }
 
 void Scene::Update(float _deltaTime)

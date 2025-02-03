@@ -14,6 +14,7 @@ void Transform2D::Init(sf::Vector2f _position, float _scale, float _rotation, in
 
 void Transform2D::Awake()
 {
+
 }
 
 void Transform2D::Start()
