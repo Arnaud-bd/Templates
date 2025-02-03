@@ -1,5 +1,5 @@
 #include "GameManager.h"
-#include "../Components/Render.h"
+#include "../Components/SpriteRender.h"
 
 GameManager* GameManager::m_Instance = nullptr;
 
@@ -28,22 +28,17 @@ int GameManager::Loop()
     Scene* s = new Scene();
     m_SceneManager->SetCurrentScene(s);
 
-    SpriteRender* spren = new SpriteRender("..\\..\\..\\res\\Sprite\\ballBlue.png");
-    Render* re = new Render(spren);
-    s->Add(re);
+    SpriteRender* spren = s->Add<SpriteRender>();
+    spren->Init("..\\..\\..\\res\\Sprite\\ballBlue.png");
+
 	sf::Clock clock;
-
-	while (true)
-	{
-		sf::Time elapsed = clock.restart();
-		float deltaTime = elapsed.asSeconds();
-
-		m_SceneManager->GetCurrentScene()->Update(deltaTime);
-		//m_SceneManager->GetCurrentScene()->draw(); 
-	}
 
     while (mWindow.isOpen())
     {
+
+        sf::Time elapsed = clock.restart();
+        float deltaTime = elapsed.asSeconds();
+
         sf::Event event;
         while (mWindow.pollEvent(event))
         {
@@ -51,7 +46,7 @@ int GameManager::Loop()
                 mWindow.close();
         }
 
-        m_SceneManager->GetCurrentScene()->Update();
+        m_SceneManager->GetCurrentScene()->Update(deltaTime);
         m_SceneManager->GetCurrentScene()->Drawing(&mWindow);
     }
 

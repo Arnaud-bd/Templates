@@ -1,6 +1,10 @@
 #include "SpriteRender.h"
 
-SpriteRender::SpriteRender(const std::string& texturePath)
+SpriteRender::SpriteRender() : Render()
+{
+}
+
+void SpriteRender::Init(const std::string& texturePath)
 {
     if (!texture.loadFromFile(texturePath))
     {
