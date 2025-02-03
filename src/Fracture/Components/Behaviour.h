@@ -7,7 +7,5 @@ public:
 	Behaviour();
 
 	virtual void Update(float _deltaTime) = 0;
-	//Elle doit permettre à ses enfants de pouvoir intéragir facilement avec les autres components de l'entité ??
-
 };
 
