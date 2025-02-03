@@ -11,7 +11,7 @@ class Transform2D : public Component
 public:
 	Transform2D();
 
-	void Init(sf::Vector2f _position, float _scale, float _rotation);
+	void Init(sf::Vector2f _position, float _scale, float _rotation, int _ID);
 	void Awake() override;
 	void Start() override;
 

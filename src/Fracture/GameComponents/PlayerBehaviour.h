@@ -4,7 +4,6 @@
 
 class PlayerBehaviour : public Behaviour
 {
-	Transform2D* m_transform;
 public:
 	PlayerBehaviour();
 
