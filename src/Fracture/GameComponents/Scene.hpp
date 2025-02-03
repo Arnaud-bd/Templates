@@ -1,11 +1,11 @@
 #pragma once
 #include <iostream>
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 
 class Transform2D;
 class Component;
 
-class Scene : public sf::Drawable
+class Scene
 {
 	std::vector<Component*> m_ComponentsList;
 
@@ -18,7 +18,7 @@ public:
 	Transform2D* CreateEntity(sf::Vector2f _position, float _scale, float _rotation);
 	void Add(Component* _component);
 	void Update();
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	void Drawing(sf::RenderWindow* _render);
 };
 
 template<typename _type>

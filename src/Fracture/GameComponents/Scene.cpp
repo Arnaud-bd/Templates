@@ -1,6 +1,8 @@
 #include "Scene.hpp"
 #include "../Components/Behaviour.h"
 #include "../Components/Transform2D.h"
+#include "../Components/Render.h"
+
 Scene::Scene()
 {
 }
@@ -28,8 +30,19 @@ void Scene::Update()
 	}
 }
 
-void Scene::draw(sf::RenderTarget& target, sf::RenderStates states) const
+void Scene::Drawing(sf::RenderWindow* _render)
 {
+    _render->clear(sf::Color::Black);
 
+    std::vector<Render*> renders = GetAll<Render>();
+
+    for (size_t i = 0; i < renders.size(); ++i) 
+	{
+        _render->draw(*renders[i]);
+    }
+
+    _render->display();
 }
+
+
 
