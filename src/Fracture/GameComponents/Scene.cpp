@@ -1,5 +1,6 @@
 #include "Scene.hpp"
 #include "../GameComponents/PlayerBehaviour.h"
+#include "../GameComponents/BrickBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 
@@ -20,12 +21,27 @@ void Scene::Init()
 {
 	Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
 	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
-	for (int i = 0; i < 10; ++i)
-	{
-		Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
-		//BrickBehaviour* BrickBehaviour = gameobject->Add<BrickBehaviour>(); // Création des bricks
-	}
 
+	const int rows = 10;				// Nombre de rangées de briques
+	const int cols = 10;				// Nombre de briques par rangée
+	const float brickWidth = 50.0f;		// Largeur de la brique
+	const float brickHeight = 20.0f;	// Hauteur de la brique
+	const float gap = 30.0f;			// Espace entre les briques
+
+	const float startX = 200.0f;
+	const float startY = 500.0f;
+
+	for (int row = 0; row < rows; ++row)
+	{
+		float y = startY - row * (brickHeight + gap);
+
+		for (int col = 0; col < cols; ++col)
+		{
+			float x = startX + col * (brickWidth + gap);
+			Transform2D* gameobject = CreateEntity({ x, y }, 1, 0);
+			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
+		}
+	}
 }
 
 void Scene::AddComponent(Component* _component)
@@ -66,6 +82,3 @@ void Scene::Drawing(sf::RenderWindow* _render)
 
     _render->display();
 }
-
-
-

@@ -5,7 +5,7 @@
 class GameManager
 {
 	static GameManager* m_Instance;
-	sf::RenderWindow m_Window; //?
+	sf::RenderWindow m_Window;
 	SceneManager* m_SceneManager;
 
 public:

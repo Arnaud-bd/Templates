@@ -5,7 +5,7 @@ Component::Component()
 {
 }
 
-uint64_t Component::GetID()
+uint64_t Component::GetID() const
 {
     return m_ID;
 }

@@ -19,7 +19,7 @@ public:
 	template <typename _type>
 	_type* GetAll();
 	
-	uint64_t GetID();
+	uint64_t GetID() const;
 	void SetID(uint64_t _ID);
 	virtual void Awake() = 0;
 	virtual void Start() = 0;

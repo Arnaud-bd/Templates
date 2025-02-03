@@ -5,7 +5,7 @@
 #include <iostream>
 
 PlayerBehaviour::PlayerBehaviour()
-{
+{ 
 	
 }
 
@@ -24,11 +24,11 @@ void PlayerBehaviour::Update(float _deltaTime)
         {
             playerTransform = transforms[i];
             std::cout << " X : " << transforms[i]->m_Position.x << " Y : " << transforms[i]->m_Position.y << std::endl; 
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && transforms[i]->m_Position.x < 800)
             {
                 transforms[i]->m_Position.x += 500 * 1 * _deltaTime;
             }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && transforms[i]->m_Position.x > 100)
             {
                 transforms[i]->m_Position.x += 500 * -1 * _deltaTime;
             }
