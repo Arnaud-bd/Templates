@@ -20,7 +20,6 @@ void Scene::Init()
 {
 	Transform2D* player = CreateEntity({ 50, 100 }, 1, 0);
 	PlayerBehaviour* playerBehaviour = player->Add<PlayerBehaviour>();
-	playerBehaviour->Awake();
 }
 
 void Scene::AddComponent(Component* _component)
