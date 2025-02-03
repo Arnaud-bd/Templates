@@ -18,8 +18,14 @@ Scene::~Scene()
 
 void Scene::Init()
 {
-	Transform2D* player = CreateEntity({ 50, 100 }, 1, 0);
-	PlayerBehaviour* playerBehaviour = player->Add<PlayerBehaviour>();
+	Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
+	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
+	for (int i = 0; i < 10; ++i)
+	{
+		Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
+		//BrickBehaviour* BrickBehaviour = gameobject->Add<BrickBehaviour>(); // Création des bricks
+	}
+
 }
 
 void Scene::AddComponent(Component* _component)

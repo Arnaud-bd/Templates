@@ -18,37 +18,43 @@ void PlayerBehaviour::Update(float _deltaTime)
 
     Transform2D* playerTransform = nullptr;
 
-    for (auto& transform : transforms)
+    for (int i = 0; i < transforms.size(); ++i)
     {
-        if (transform->GetID() == this->GetID())
+        if (transforms[i]->GetID() == this->GetID())
         {
-            playerTransform = transform;
-            std::cout << " X : " << transform->m_Position.x << " Y : " << transform->m_Position.y << std::endl;
-            transform->m_Position.x += 10 * _deltaTime;
-            transform->m_Position.y += 10 * _deltaTime;
+            playerTransform = transforms[i];
+            std::cout << " X : " << transforms[i]->m_Position.x << " Y : " << transforms[i]->m_Position.y << std::endl; 
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+            {
+                transforms[i]->m_Position.x += 500 * 1 * _deltaTime;
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            {
+                transforms[i]->m_Position.x += 500 * -1 * _deltaTime;
+            }
             break;
         }
     }
 
     if (playerTransform)
     {
-        for (auto& render : renders)
+        for (int i = 0; i < renders.size(); ++i)
         {
-            if (render->GetID() == this->GetID())
+            if (renders[i]->GetID() == this->GetID())
             {
-                render->move(playerTransform->m_Position);
+                renders[i]->move(playerTransform->m_Position);
                 break;
             }
         }
     }
 }
 
-
 void PlayerBehaviour::Awake()
 {
     Collider* c = Add<Collider>();
     //c->Init ?
     c->Awake();
+
     SpriteRender* s = Add<SpriteRender>();
     s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png");
     s->Awake();

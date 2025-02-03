@@ -32,11 +32,6 @@ int GameManager::Loop()
 	sf::Clock clock;
 
     std::vector<Component*> vect = m_SceneManager->GetCurrentScene()->GetAll<Component>();
-   /* for (int i = 0; i < vect.size(); i++)
-    {
-        vect[i]->Awake();
-    }*/ //Non pck les trucs sont déja Awake()
-
     for (int i = 0; i < vect.size(); i++)
     {
         vect[i]->Start();
