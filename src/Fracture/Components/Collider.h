@@ -4,11 +4,21 @@
 
 class Collider : public Component
 {
-	std::vector<sf::CircleShape> m_Hitboxs;
+	std::vector<sf::CircleShape*> m_Hitboxs;
 	bool m_IsTrigger;
 
 public:
 	Collider();
+
+	void AddHitbox(sf::Vector2f _position, float radius);
+
+	bool IsCollide(Collider _other);
+
+	bool OnTriggerEnter(Collider _other);
+
+	bool OnTriggerExit(Collider _other);
+
+	bool OnTriggerStay(Collider _other);
 
 	void Awake() override;
 	void Start() override;

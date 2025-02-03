@@ -1,5 +1,6 @@
 #include "Scene.hpp"
 #include "../GameComponents/PlayerBehaviour.h"
+#include "../GameComponents/BallBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 
@@ -18,8 +19,11 @@ Scene::~Scene()
 
 void Scene::Init()
 {
-	Transform2D* player = CreateEntity({ 50, 100 }, 1, 0);
+	Transform2D* player = CreateEntity({ 600, 400 }, 1, 0);
 	PlayerBehaviour* playerBehaviour = player->Add<PlayerBehaviour>();
+
+	Transform2D* ball = CreateEntity({ 500, 500 }, 1, 0);
+	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
 }
 
 void Scene::AddComponent(Component* _component)
