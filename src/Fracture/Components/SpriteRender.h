@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Render.h"
 
-class SpriteRender : public sf::Drawable 
+class SpriteRender : public Render
 {
 public:
+
     sf::Sprite sprite;
     sf::Texture texture;
 

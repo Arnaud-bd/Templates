@@ -28,9 +28,10 @@ int GameManager::Loop()
     Scene* s = new Scene();
     m_SceneManager->SetCurrentScene(s);
 
-    SpriteRender* spren = new SpriteRender("D:\\---DEV---\\lyo-t1-amstrad-p7-05\\res\\Sprite\\ballBlue.png");
+    SpriteRender* spren = new SpriteRender("..\\..\\..\\res\\Sprite\\ballBlue.png");
     Render* re = new Render(spren);
     s->Add(re);
+
     while (mWindow.isOpen())
     {
         sf::Event event;
