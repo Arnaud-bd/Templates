@@ -10,9 +10,10 @@ class Component
 	std::string m_tag;
 
 public:
+	Component();
 
 	template <typename _type>
-	_type* Add(Component* _componant);
+	_type* Add();
 	template <typename _type>
 	_type* Get();
 	template <typename _type>
@@ -23,15 +24,15 @@ public:
 };
 
 template<typename _type>
-_type* Component::Add(Component* _componant)
+_type* Component::Add()
 {
-	GameManager::GetInstance().GetCurrentScene().Add(_componant);
+	return GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->Add<_type>();
 }
 
 template<typename _type>
 _type* Component::Get()
 {
-	std::vector<_type*> ComponentList = GameManager::GetInstance().GetCurrentScene().GetAll(); 
+	std::vector<_type*> ComponentList = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<_type>();
 	for (int i = 0; i < ComponentList.size(); ++i)
 	{
 		if (_type* result = dynamic_cast<_type*>(ComponentList[i]))

@@ -15,9 +15,11 @@ public:
 	template <typename _type>
 	std::vector<_type*> GetAll();
 
+	template <typename _type>
+	_type* Add();
+
 	Transform2D* CreateEntity(sf::Vector2f _position, float _scale, float _rotation);
-	void Add(Component* _component);
-	void Update();
+	void Update(float _deltaTime);
 	void Drawing(sf::RenderWindow* _render);
 };
 
@@ -35,4 +37,13 @@ inline std::vector<_type*> Scene::GetAll()
 	}
 
 	return vect;
+}
+
+template<typename _type>
+inline _type* Scene::Add()
+{
+	_type* component = new _type();	
+	m_ComponentsList.push_back(component);
+
+	return component;
 }

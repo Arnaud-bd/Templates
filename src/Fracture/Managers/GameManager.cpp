@@ -31,6 +31,16 @@ int GameManager::Loop()
     SpriteRender* spren = new SpriteRender("..\\..\\..\\res\\Sprite\\ballBlue.png");
     Render* re = new Render(spren);
     s->Add(re);
+	sf::Clock clock;
+
+	while (true)
+	{
+		sf::Time elapsed = clock.restart();
+		float deltaTime = elapsed.asSeconds();
+
+		m_SceneManager->GetCurrentScene()->Update(deltaTime);
+		//m_SceneManager->GetCurrentScene()->draw(); 
+	}
 
     while (mWindow.isOpen())
     {

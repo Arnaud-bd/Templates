@@ -9,6 +9,11 @@ class Transform2D : public Component
 	float m_Rotation;
 
 public:
-	Transform2D(sf::Vector2f _position, float _scale, float _rotation);
+	Transform2D();
+
+	void Init(sf::Vector2f _position, float _scale, float _rotation);
+	void Awake() override;
+	void Start() override;
+
 };
 
