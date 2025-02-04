@@ -68,11 +68,7 @@ void Collider::Update()
         {
             for (int j = 0; j < m_Hitboxs.size(); ++j)
             {
-<<<<<<< Updated upstream
-                m_Hitboxs[j]->setPosition(transforms[i]->m_Position);
-=======
                 m_Hitboxs[j]->setPosition(transforms[i]->m_Position + m_HitboxsRelative[j]);
->>>>>>> Stashed changes
             }
         }
     }

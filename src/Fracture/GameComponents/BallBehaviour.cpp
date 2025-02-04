@@ -23,7 +23,7 @@ void BallBehaviour::Update(float _deltaTime)
         if (transforms[i]->GetID() == this->GetID())
         {
             playerTransform = transforms[i];
-            std::cout << " X : " << transforms[i]->m_Position.x << " Y : " << transforms[i]->m_Position.y << std::endl;
+            std::cout << " X : " << m_Direction.x << " Y : " << m_Direction.y << std::endl;
             transforms[i]->m_Position.x += m_Direction.x * 500.f * _deltaTime;
             transforms[i]->m_Position.y += m_Direction.y * 500.f * _deltaTime;
 
@@ -66,17 +66,27 @@ void BallBehaviour::Update(float _deltaTime)
                     continue;
                 }
 
-                if ((colliders[i]->IsCollide(*colliders[j])) == true)
-                {
-                    std::cout << "BIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIM" << std::endl;
-                    std::cout << " " << std::endl;
-                    if (m_Direction.y > 0)
+                if (colliders[i]->IsCollide(*colliders[j])) {
+                    std::cout << "Collision détectée !" << std::endl;
+
+                    if (m_Direction.x > 0 && m_Direction.y > 0)
                     {
                         m_Direction.y = -m_Direction.y;
                     }
-                    else if (m_Direction.x < 0)
+
+                    else if (m_Direction.x > 0 && m_Direction.y < 0)
                     {
-                        m_Direction.x = -m_Direction.x;
+                        m_Direction.y = -m_Direction.y;
+                    }
+
+                    else if (m_Direction.x < 0 && m_Direction.y < 0)
+                    {
+                        m_Direction.y = -m_Direction.y;
+                    }
+
+                    else if (m_Direction.x < 0 && m_Direction.y > 0)
+                    {
+                        m_Direction.y = -m_Direction.y;
                     }
                     return;
                 }

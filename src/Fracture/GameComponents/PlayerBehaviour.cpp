@@ -21,7 +21,6 @@ void PlayerBehaviour::Update(float _deltaTime)
         if (transforms[i]->GetID() == this->GetID())
         {
             playerTransform = transforms[i];
-            std::cout << " X : " << transforms[i]->m_Position.x << " Y : " << transforms[i]->m_Position.y << std::endl; 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && transforms[i]->m_Position.x < 800)
             {
                 transforms[i]->m_Position.x += 500 * 1 * _deltaTime;
