@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include "../GameComponents/BackGroundBehaviour.h"
 #include "../GameComponents/PlayerBehaviour.h"
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"
@@ -46,6 +47,10 @@ void Scene::Init()
 
 	Transform2D* ball = CreateEntity({ 500, 500 }, 1, 0);
 	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
+
+
+	Transform2D* backGround = CreateEntity({ 500, 594}, 1, 0);
+	BackGroundBehaviour* backGroundBehaviour = backGround->Add<BackGroundBehaviour>();
 }
 
 void Scene::AddComponent(Component* _component)

@@ -20,7 +20,7 @@ SceneManager* GameManager::GetSceneManager()
 
 int GameManager::Loop()
 {
-    m_Window.create(sf::VideoMode(1000, 1000), "Fracture", sf::Style::Close);
+    m_Window.create(sf::VideoMode(), "Fracture", sf::Style::Fullscreen);
     m_Window.setPosition(sf::Vector2i(366, 0));
 
     m_SceneManager = new SceneManager();

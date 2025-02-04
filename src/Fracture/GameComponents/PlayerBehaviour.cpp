@@ -50,7 +50,7 @@ void PlayerBehaviour::Update(float _deltaTime)
 void PlayerBehaviour::Awake()
 {
     SpriteRender* s = Add<SpriteRender>();
-    s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png");
+    s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png", { 900, 900 }, { 1,1 });
     s->Awake();
     Collider* c = Add<Collider>();
     c->AddHitbox({ 0,0 }, 20);

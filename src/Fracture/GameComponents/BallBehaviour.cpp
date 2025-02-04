@@ -92,7 +92,7 @@ void BallBehaviour::Update(float _deltaTime)
 void BallBehaviour::Awake()
 {
     SpriteRender* s = Add<SpriteRender>();
-    s->Init("..\\..\\..\\res\\Sprite\\ballBlue.png");
+    s->Init("..\\..\\..\\res\\Sprite\\ballBlue.png", {500, 500}, {1,1});
     s->Awake();
     Collider* c = Add<Collider>();
     c->AddHitbox({0,0}, 11);
