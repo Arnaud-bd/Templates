@@ -84,7 +84,7 @@ Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, fl
 
 void Scene::Update(float _deltaTime)
 {
-	for (int i = 0; i < m_ComponentsList.size(); --i)
+	for (int i = m_ComponentsList.size() - 1; i < 0; --i)
 	{
 		if (Behaviour* b = dynamic_cast<Behaviour*>(m_ComponentsList[i]))
 			b->Update(_deltaTime);
@@ -113,9 +113,9 @@ void Scene::Drawing(sf::RenderWindow* _render)
 
    std::vector<Render*> renders = GetAll<Render>();
 
-    for (size_t i = 0; i < renders.size(); ++i) 
+    for (int i = 0; i < renders.size(); ++i) 
 	{
-        _render->draw(*renders[i]);
+		_render->draw(*renders[i]);
     }
 
     _render->display();

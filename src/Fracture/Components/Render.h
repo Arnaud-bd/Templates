@@ -8,7 +8,7 @@ public:
     sf::Drawable* todraw;
     sf::Transform* transform;
 
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states);
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
     void Start();
     void Awake();

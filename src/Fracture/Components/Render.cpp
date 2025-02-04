@@ -1,9 +1,9 @@
 #include "Render.h"
 #include "../Components/Transform2D.h"
 
-void Render::draw(sf::RenderTarget& target, sf::RenderStates states)
+void Render::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 {
-	states.transform = Get<Transform2D>()->getTransform();
+	//states.transform = Get<Transform2D>()->getTransform();
 	target.draw(*todraw, states);
 }
 

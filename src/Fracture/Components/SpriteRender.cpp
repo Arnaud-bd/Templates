@@ -14,8 +14,3 @@ void SpriteRender::Init(const std::string& texturePath)
     sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
     todraw = &sprite;
 }
-
-void SpriteRender::draw(sf::RenderTarget& target, sf::RenderStates states) const
-{
-
-}
