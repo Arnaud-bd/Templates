@@ -32,11 +32,11 @@ void BrickBehaviour::Awake()
 
 void BrickBehaviour::Start()
 {
-
     Transform2D* transform = Get<Transform2D>(); 
     Render* renders = Get<Render>(); 
+}
 
-
-   renders->move(transform->m_Position);
+void BrickBehaviour::OnCollide()
+{
 
 }

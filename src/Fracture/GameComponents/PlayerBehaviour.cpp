@@ -10,7 +10,6 @@ PlayerBehaviour::PlayerBehaviour()
 void PlayerBehaviour::Update(float _deltaTime)
 {
     Transform2D* playerTransform = Get<Transform2D>();
-    Render* render = Get<Render>(); 
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && playerTransform->m_Position.x < 800)
     {
@@ -20,8 +19,6 @@ void PlayerBehaviour::Update(float _deltaTime)
     {
         playerTransform->m_Position.x += 500 * -1 * _deltaTime;
     }
-     
-    render->move(playerTransform->m_Position); //Toujours pas là 
 }
 
 void PlayerBehaviour::Awake()
@@ -44,4 +41,9 @@ void PlayerBehaviour::Awake()
 
 void PlayerBehaviour::Start()
 {
+}
+
+void PlayerBehaviour::OnCollide()
+{
+
 }

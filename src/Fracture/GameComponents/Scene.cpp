@@ -27,7 +27,7 @@ void Scene::Init()
 	BackGroundBehaviour* backGroundBehaviour = backGround->Add<BackGroundBehaviour>();
 
 	Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
-	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Cr�ation du joueurs
+	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
 
 	const int rows = 10;				// Nombre de rang�es de briques
 	const int cols = 10;				// Nombre de briques par rang�e
@@ -90,9 +90,22 @@ void Scene::Update(float _deltaTime)
 	{
 		if (Behaviour* b = dynamic_cast<Behaviour*>(m_ComponentsList[i]))
 			b->Update(_deltaTime);
+	}
+}
 
-		if (Collider* c = dynamic_cast<Collider*>(m_ComponentsList[i]))
-			c->Update(); 
+void Scene::Physic()
+{
+	std::vector<Collider*> colliders = this->GetAll<Collider>();
+	for (int i = 0; i < colliders.size(); ++i)
+	{
+		for (int j = 0; j < colliders.size(); ++j)
+		{
+			if (colliders[i]->IsCollide(*colliders[j]) && colliders[i] != colliders[j])
+			{
+				colliders[i]->Get<Behaviour>()->OnCollide();
+				colliders[j]->Get<Behaviour>()->OnCollide(); 
+			}
+		}
 	}
 }
 

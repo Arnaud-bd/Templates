@@ -23,29 +23,6 @@ void BallBehaviour::Update(float _deltaTime)
         playerTransform->m_Position.x = 0.f;
         m_Direction.x = -m_Direction.x;
     }
-
-    if (playerTransform->m_Position.x >= 1166.f)
-    {
-        playerTransform->m_Position.x = 1166.f;
-        m_Direction.x = -m_Direction.x;
-    }
-
-    if (playerTransform->m_Position.y <= 0.f)
-    {
-        playerTransform->m_Position.y = 0.f;
-        m_Direction.y = -m_Direction.y;
-    }
-
-    if (playerTransform->m_Position.y >= 978.f)
-    {
-        playerTransform->m_Position.y = 978.f;
-        m_Direction.y = -m_Direction.y;
-    }
-
-    if (playerTransform)
-    {
-        render->move(playerTransform->m_Position);  //ça non pas ici, c'est le transform2D qui bouge uniquement 
-    }
 }
 
 
@@ -63,4 +40,27 @@ void BallBehaviour::Start()
 {
     m_Direction.x =  1.f;
     m_Direction.y = -1.f;
+}
+
+void BallBehaviour::OnCollide()
+{
+    if (m_Direction.x > 0 && m_Direction.y > 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
+
+    else if (m_Direction.x > 0 && m_Direction.y < 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
+
+    else if (m_Direction.x < 0 && m_Direction.y < 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
+
+    else if (m_Direction.x < 0 && m_Direction.y > 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
 }

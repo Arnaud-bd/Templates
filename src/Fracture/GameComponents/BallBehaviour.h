@@ -12,4 +12,5 @@ public:
 	void Update(float _deltaTime) override;
 	void Awake() override;
 	void Start() override;
+	void OnCollide() override;
 };

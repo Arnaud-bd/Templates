@@ -2,16 +2,13 @@
 #include <SFML/Graphics.hpp>
 #include "Component.hpp"
 
-class Transform2D : public Component
+class Transform2D : public Component, public sf::Transformable
 {
 public:
-	sf::Vector2f m_Position;
-	float m_Scale;
-	float m_Rotation;
 
 	Transform2D();
 
-	void Init(sf::Vector2f _position, float _scale, float _rotation, int _ID);
+	void Init(sf::Vector2f _position, sf::Vector2f _scale, float _rotation, int _ID);
 	void Awake() override;
 	void Start() override;
 
