@@ -2,10 +2,11 @@
 #include "../Components/Transform2D.h"
 #include "../Components/Behaviour.h"
 
-class PlayerBehaviour : public Behaviour
+class BrickBehaviour : public Behaviour
 {
 public:
-	PlayerBehaviour();
+	BrickBehaviour();
+	~BrickBehaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

@@ -2,13 +2,14 @@
 #include "../Components/Transform2D.h"
 #include "../Components/Behaviour.h"
 
-class PlayerBehaviour : public Behaviour
+class BallBehaviour : public Behaviour
 {
+	sf::Vector2f m_Direction;
+
 public:
-	PlayerBehaviour();
+	BallBehaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;
 	void Start() override;
 };
-

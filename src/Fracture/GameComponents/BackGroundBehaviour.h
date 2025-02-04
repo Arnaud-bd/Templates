@@ -1,11 +1,10 @@
 #pragma once
-#include "../Components/Transform2D.h"
 #include "../Components/Behaviour.h"
 
-class PlayerBehaviour : public Behaviour
+class BackGroundBehaviour : public Behaviour
 {
 public:
-	PlayerBehaviour();
+	BackGroundBehaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

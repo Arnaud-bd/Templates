@@ -4,3 +4,13 @@
 Component::Component()
 {
 }
+
+uint64_t Component::GetID() const
+{
+    return m_ID;
+}
+
+void Component::SetID(uint64_t _ID)
+{
+    m_ID = _ID;
+}

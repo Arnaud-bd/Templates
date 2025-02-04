@@ -2,8 +2,7 @@
 #include "Managers/GameManager.h"
 int main()
 {
-	GameManager gameManager;
-	gameManager.GetInstance();
-	gameManager.Loop();
+	GameManager* gameManager = GameManager::GetInstance();
+	gameManager->Loop();
 
 }
