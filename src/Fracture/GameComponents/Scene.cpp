@@ -1,6 +1,7 @@
 #include "Scene.hpp"
 #include "../GameComponents/PlayerBehaviour.h"
 #include "../GameComponents/BrickBehaviour.h"
+#include "../GameComponents/BallBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 
@@ -20,10 +21,10 @@ Scene::~Scene()
 void Scene::Init()
 {
 	Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
-	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
+	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Crï¿½ation du joueurs
 
-	const int rows = 10;				// Nombre de rangées de briques
-	const int cols = 10;				// Nombre de briques par rangée
+	const int rows = 10;				// Nombre de rangï¿½es de briques
+	const int cols = 10;				// Nombre de briques par rangï¿½e
 	const float brickWidth = 50.0f;		// Largeur de la brique
 	const float brickHeight = 20.0f;	// Hauteur de la brique
 	const float gap = 30.0f;			// Espace entre les briques
@@ -42,6 +43,9 @@ void Scene::Init()
 			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
 		}
 	}
+
+	Transform2D* ball = CreateEntity({ 500, 500 }, 1, 0);
+	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
 }
 
 void Scene::AddComponent(Component* _component)
