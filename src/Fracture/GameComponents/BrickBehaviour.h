@@ -6,6 +6,7 @@ class BrickBehaviour : public Behaviour
 {
 public:
 	BrickBehaviour();
+	~BrickBehaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

@@ -1,6 +1,7 @@
 #include "BallBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
+#include "../GameComponents/BrickBehaviour.h"
 #include <iostream>
 
 BallBehaviour::BallBehaviour()
@@ -66,8 +67,16 @@ void BallBehaviour::Update(float _deltaTime)
                     continue;
                 }
 
-                if (colliders[i]->IsCollide(*colliders[j])) {
-                    std::cout << "Collision détectée !" << std::endl;
+                if (colliders[i]->IsCollide(*colliders[j]))
+                {
+                    std::vector<BrickBehaviour*> bricks = scene->GetAll<BrickBehaviour>(); 
+                    for (int i = 0; i < bricks.size(); ++i)
+                    {
+                        if (bricks[i]->GetID() == colliders[j]->GetID())
+                        {
+                            scene->RemoveComponent(bricks[i]);
+                        }
+                    }
 
                     if (m_Direction.x > 0 && m_Direction.y > 0)
                     {

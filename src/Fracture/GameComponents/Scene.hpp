@@ -8,6 +8,7 @@ class Component;
 class Scene
 {
 	std::vector<Component*> m_ComponentsList;
+	std::vector<Component*> m_destroyer;
 
 public:
 	Scene();
@@ -18,6 +19,7 @@ public:
 
 	void Init();
 	void AddComponent(Component* _component);
+	void RemoveComponent(Component* _component);
 	Transform2D* CreateEntity(sf::Vector2f _position, float _scale, float _rotation);
 	void Update(float _deltaTime);
 	void Drawing(sf::RenderWindow* _render);

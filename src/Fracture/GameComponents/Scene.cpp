@@ -61,6 +61,18 @@ void Scene::AddComponent(Component* _component)
 	m_ComponentsList.push_back(_component);
 }
 
+void Scene::RemoveComponent(Component* _component)
+{
+	int id = _component->GetID();
+	for (int i = m_ComponentsList.size() - 1; i >= 0; --i)
+	{
+		if (m_ComponentsList[i]->GetID() == id)
+		{
+			m_destroyer.push_back(m_ComponentsList[i]);
+		}
+	}
+}
+
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, float _scale, float _rotation)
 {
 	Transform2D* transform = new Transform2D();
@@ -74,12 +86,13 @@ Transform2D* Scene::CreateEntity(sf::Vector2f _position, float _scale, float _ro
 
 void Scene::Update(float _deltaTime)
 {
-	for (int i = 0; i < m_ComponentsList.size(); i++)
+	for (int i = 0; i < m_ComponentsList.size(); --i)
 	{
 		if (Behaviour* b = dynamic_cast<Behaviour*>(m_ComponentsList[i]))
 			b->Update(_deltaTime);
+
 		if (Collider* c = dynamic_cast<Collider*>(m_ComponentsList[i]))
-			c->Update();
+			c->Update(); 
 	}
 }
 

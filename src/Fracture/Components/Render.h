@@ -2,10 +2,10 @@
 #include <SFML/Graphics.hpp>
 #include "Component.hpp"
 
-class Render : public sf::Drawable, public Component, public sf::Transformable
+class Render :  public Component, public sf::Transformable, public sf::Drawable
 {
 public:
-
+    sf::Drawable* todraw;
     sf::Transform* transform;
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states);

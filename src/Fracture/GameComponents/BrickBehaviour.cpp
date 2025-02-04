@@ -12,10 +12,18 @@ void BrickBehaviour::Update(float _deltaTime)
 {
 }
 
+BrickBehaviour::~BrickBehaviour()
+{
+}
+
 void BrickBehaviour::Awake()
 {
     Collider* c = Add<Collider>();
-    //c->Init ?
+
+    c->AddHitbox({ -16,0 }, 14);
+    c->AddHitbox({ 0,0 }, 14);
+    c->AddHitbox({ 16,0 }, 14);
+
     c->Awake();
 
     SpriteRender* s = Add<SpriteRender>();
@@ -25,30 +33,11 @@ void BrickBehaviour::Awake()
 
 void BrickBehaviour::Start()
 {
-    Scene* scene = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene(); 
 
-    std::vector<Transform2D*> transforms = scene->GetAll<Transform2D>(); 
-    std::vector<Render*> renders = scene->GetAll<Render>(); 
+    Transform2D* transform = Get<Transform2D>(); 
+    Render* renders = Get<Render>(); 
 
-    Transform2D* BrickTransform = nullptr;
 
-    for (int i = 0; i < transforms.size(); ++i)
-    {
-        if (transforms[i]->GetID() == this->GetID())
-        { 
-            BrickTransform = transforms[i]; 
-        }
-    }
+   renders->move(transform->m_Position);
 
-    if (BrickTransform)
-    {
-        for (int i = 0; i < renders.size(); ++i)
-        {
-            if (renders[i]->GetID() == this->GetID())
-            {
-                renders[i]->move(BrickTransform->m_Position); 
-                break;
-            }
-        }
-    }
 }
