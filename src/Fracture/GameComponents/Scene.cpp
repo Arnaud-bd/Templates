@@ -4,6 +4,7 @@
 #include "../GameComponents/BallBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
+#include "../Components/Collider.h"
 
 Scene::Scene()
 {
@@ -70,6 +71,8 @@ void Scene::Update(float _deltaTime)
 	{
 		if (Behaviour* b = dynamic_cast<Behaviour*>(m_ComponentsList[i]))
 			b->Update(_deltaTime);
+		if (Collider* c = dynamic_cast<Collider*>(m_ComponentsList[i]))
+			c->Update();
 	}
 }
 

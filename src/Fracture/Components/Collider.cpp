@@ -9,6 +9,7 @@ Collider::Collider()
 void Collider::AddHitbox(sf::Vector2f _position, float _radius)
 {
     sf::CircleShape* c = new sf::CircleShape();
+    c->setOutlineColor(sf::Color::Green);
     c->setRadius(_radius);
     c->setOrigin(c->getOrigin().x + _radius, c->getOrigin().y + _radius);
     std::vector<SpriteRender*> Sprites = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<SpriteRender>();
@@ -22,6 +23,7 @@ void Collider::AddHitbox(sf::Vector2f _position, float _radius)
     }
 
     m_Hitboxs.push_back(c);
+    m_HitboxsRelative.push_back(_position);
 }
 
 bool Collider::IsCollide(Collider _other)
@@ -66,7 +68,11 @@ void Collider::Update()
         {
             for (int j = 0; j < m_Hitboxs.size(); ++j)
             {
+<<<<<<< Updated upstream
                 m_Hitboxs[j]->setPosition(transforms[i]->m_Position);
+=======
+                m_Hitboxs[j]->setPosition(transforms[i]->m_Position + m_HitboxsRelative[j]);
+>>>>>>> Stashed changes
             }
         }
     }

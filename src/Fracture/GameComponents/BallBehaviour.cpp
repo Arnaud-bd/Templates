@@ -18,36 +18,36 @@ void BallBehaviour::Update(float _deltaTime)
 
     Transform2D* playerTransform = nullptr;
 
-    for (auto& transform : transforms)
+    for (int i = 0; i < transforms.size(); ++i)
     {
-        if (transform->GetID() == this->GetID())
+        if (transforms[i]->GetID() == this->GetID())
         {
-            playerTransform = transform;
-            std::cout << " X : " << transform->m_Position.x << " Y : " << transform->m_Position.y << std::endl;
-            transform->m_Position.x += m_Direction.x * 500.f * _deltaTime;
-            transform->m_Position.y += m_Direction.y * 500.f * _deltaTime;
+            playerTransform = transforms[i];
+            std::cout << " X : " << transforms[i]->m_Position.x << " Y : " << transforms[i]->m_Position.y << std::endl;
+            transforms[i]->m_Position.x += m_Direction.x * 500.f * _deltaTime;
+            transforms[i]->m_Position.y += m_Direction.y * 500.f * _deltaTime;
 
-            if (transform->m_Position.x <= 0.f)
+            if (transforms[i]->m_Position.x <= 0.f)
             {
-                transform->m_Position.x = 0.f;
+                transforms[i]->m_Position.x = 0.f;
                 m_Direction.x = -m_Direction.x;
             }
 
-            if (transform->m_Position.x >= 1166.f)
+            if (transforms[i]->m_Position.x >= 1166.f)
             {
-                transform->m_Position.x = 1166.f;
+                transforms[i]->m_Position.x = 1166.f;
                 m_Direction.x = -m_Direction.x;
             }
 
-            if (transform->m_Position.y <= 0.f)
+            if (transforms[i]->m_Position.y <= 0.f)
             {
-                transform->m_Position.y = 0.f;
+                transforms[i]->m_Position.y = 0.f;
                 m_Direction.y = -m_Direction.y;
             }
 
-            if (transform->m_Position.y >= 978.f)
+            if (transforms[i]->m_Position.y >= 978.f)
             {
-                transform->m_Position.y = 978.f;
+                transforms[i]->m_Position.y = 978.f;
                 m_Direction.y = -m_Direction.y;
             }
 
@@ -68,8 +68,17 @@ void BallBehaviour::Update(float _deltaTime)
 
                 if ((colliders[i]->IsCollide(*colliders[j])) == true)
                 {
-                    std::cout << "coucou" << std::endl;
-                    /*colliders[j].isDead = true;*/
+                    std::cout << "BIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIM" << std::endl;
+                    std::cout << " " << std::endl;
+                    if (m_Direction.y > 0)
+                    {
+                        m_Direction.y = -m_Direction.y;
+                    }
+                    else if (m_Direction.x < 0)
+                    {
+                        m_Direction.x = -m_Direction.x;
+                    }
+                    return;
                 }
             }
         }

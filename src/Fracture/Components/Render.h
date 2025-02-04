@@ -11,10 +11,6 @@ public:
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states);
     virtual void move(const sf::Vector2f& newPosition);
 
-
-
-
-
     //Sert a rien...
     void Start();
     void Awake();

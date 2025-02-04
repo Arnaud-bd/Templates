@@ -5,6 +5,7 @@
 class Collider : public Component
 {
 	std::vector<sf::CircleShape*> m_Hitboxs;
+	std::vector<sf::Vector2f> m_HitboxsRelative;
 	bool m_IsTrigger;
 
 public:
