@@ -1,4 +1,5 @@
 #include "Collider.h"
+#include "../Components/Transform2D.h"
 #include "../Components/SpriteRender.h"
 
 Collider::Collider()
@@ -65,7 +66,7 @@ void Collider::Update()
         {
             for (int j = 0; j < m_Hitboxs.size(); ++j)
             {
-                m_Hitboxs[j]->setPosition(transforms[i].m_position);
+                m_Hitboxs[j]->setPosition(transforms[i]->m_Position);
             }
         }
     }
