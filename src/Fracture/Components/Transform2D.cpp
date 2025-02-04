@@ -4,11 +4,11 @@ Transform2D::Transform2D()
 {
 }
 
-void Transform2D::Init(sf::Vector2f _position, float _scale, float _rotation, int _ID)
+void Transform2D::Init(sf::Vector2f _position, sf::Vector2f _scale, float _rotation, int _ID)
 {
-	m_Position = _position;
-	m_Scale = _scale;
-	m_Rotation = _rotation;
+	setPosition(_position);
+	setRotation(_rotation);
+	setScale(_scale);
 	SetID(_ID);
 }
 

@@ -9,18 +9,12 @@ Collider::Collider()
 void Collider::AddHitbox(sf::Vector2f _position, float _radius)
 {
     sf::CircleShape* c = new sf::CircleShape();
-    c->setOutlineColor(sf::Color::Green);
     c->setRadius(_radius);
     c->setOrigin(c->getOrigin().x + _radius, c->getOrigin().y + _radius);
-    std::vector<SpriteRender*> Sprites = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<SpriteRender>();
 
-    for (int i = 0; i < Sprites.size(); ++i)
-    {
-        if (Sprites[i]->GetID() == this->GetID())
-        {
-            c->setPosition(Sprites[i]->getPosition().x + _position.x, Sprites[i]->getPosition().y + _position.y);
-        }
-    }
+    Transform2D* transform = Get<Transform2D>();
+
+    c->setPosition(transform->getPosition().x + _position.x, transform->getPosition().y + _position.y);
 
     m_Hitboxs.push_back(c);
     m_HitboxsRelative.push_back(_position);
@@ -43,6 +37,11 @@ bool Collider::IsCollide(Collider _other)
     return false;
 }
 
+void Collider::OnCollide()
+{
+
+}
+
 bool Collider::OnTriggerEnter(Collider _other)
 {
     return false;
@@ -58,19 +57,13 @@ bool Collider::OnTriggerStay(Collider _other)
     return false;
 }
 
-void Collider::Update()
+void Collider::Update(float _deltaTime)
 {
-    std::vector<Transform2D*> transforms = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<Transform2D>();
+    Transform2D* transforms = Get<Transform2D>();
 
-    for (int i = 0; i < transforms.size(); ++i)
+    for (int j = 0; j < m_Hitboxs.size(); ++j)
     {
-        if (transforms[i]->GetID() == this->GetID())
-        {
-            for (int j = 0; j < m_Hitboxs.size(); ++j)
-            {
-                m_Hitboxs[j]->setPosition(transforms[i]->m_Position + m_HitboxsRelative[j]);
-            }
-        }
+        m_Hitboxs[j]->setPosition(transforms->getPosition() + m_HitboxsRelative[j]);
     }
 }
 

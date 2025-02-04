@@ -49,12 +49,11 @@ int GameManager::Loop()
         }
 
         m_SceneManager->GetCurrentScene()->Update(deltaTime);
+        m_SceneManager->GetCurrentScene()->Physic();
         m_SceneManager->GetCurrentScene()->Drawing(&m_Window);
     }
 
     delete s;
     delete m_SceneManager;  
-
-
     return 0;
 }

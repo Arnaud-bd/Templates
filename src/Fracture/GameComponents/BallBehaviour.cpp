@@ -56,64 +56,7 @@ void BallBehaviour::Update(float _deltaTime)
         }
     }
 
-    for (int i = 0; i < colliders.size(); ++i)
-    {
-        if (colliders[i]->GetID() == this->GetID())
-        {
-            for (int j = 0; j < colliders.size(); ++j)
-            {
-                if (i == j)
-                {
-                    continue;
-                }
-
-                if (colliders[i]->IsCollide(*colliders[j]))
-                {
-                    std::vector<BrickBehaviour*> bricks = scene->GetAll<BrickBehaviour>(); 
-                    for (int i = 0; i < bricks.size(); ++i)
-                    {
-                        if (bricks[i]->GetID() == colliders[j]->GetID())
-                        {
-                            scene->RemoveComponent(bricks[i]);
-                        }
-                    }
-
-                    if (m_Direction.x > 0 && m_Direction.y > 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-
-                    else if (m_Direction.x > 0 && m_Direction.y < 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-
-                    else if (m_Direction.x < 0 && m_Direction.y < 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-
-                    else if (m_Direction.x < 0 && m_Direction.y > 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-                    return;
-                }
-            }
-        }
-    }
-
-    if (playerTransform)
-    {
-        for (auto& render : renders)
-        {
-            if (render->GetID() == this->GetID())
-            {
-                render->move(playerTransform->m_Position);
-                break;
-            }
-        }
-    }
+    
 }
 
 
@@ -131,4 +74,27 @@ void BallBehaviour::Start()
 {
     m_Direction.x =  1.f;
     m_Direction.y = -1.f;
+}
+
+void BallBehaviour::OnCollide()
+{
+    if (m_Direction.x > 0 && m_Direction.y > 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
+
+    else if (m_Direction.x > 0 && m_Direction.y < 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
+
+    else if (m_Direction.x < 0 && m_Direction.y < 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
+
+    else if (m_Direction.x < 0 && m_Direction.y > 0)
+    {
+        m_Direction.y = -m_Direction.y;
+    }
 }

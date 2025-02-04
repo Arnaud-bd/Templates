@@ -16,24 +16,24 @@ void BackGroundBehaviour::Awake()
 {
 
     SpriteRender* cloudLayer2 = Add<SpriteRender>();
-    cloudLayer2->Init("..\\..\\..\\res\\Sprite\\cloudLayer2.png", { 960, 400 }, { 1.875f,1 });
+    cloudLayer2->Init("..\\..\\..\\res\\Sprite\\cloudLayer2.png");
     cloudLayer2->Awake();
 
 
     SpriteRender* cloudLayer1 = Add<SpriteRender>();
-    cloudLayer1->Init("..\\..\\..\\res\\Sprite\\cloudLayer1.png", { 960, 600 }, { 1.875f,1 });
+    cloudLayer1->Init("..\\..\\..\\res\\Sprite\\cloudLayer1.png");
     cloudLayer1->Awake();
 
     SpriteRender* hills = Add<SpriteRender>();
-    hills->Init("..\\..\\..\\res\\Sprite\\hills.png", { 960, 700 }, { 1.875f,1 });
+    hills->Init("..\\..\\..\\res\\Sprite\\hills.png");
     hills->Awake();
 
     SpriteRender* groundLayer2 = Add<SpriteRender>();
-    groundLayer2->Init("..\\..\\..\\res\\Sprite\\groundLayer2.png", { 960, 800 }, { 1.875f,1 });
+    groundLayer2->Init("..\\..\\..\\res\\Sprite\\groundLayer2.png");
     groundLayer2->Awake();
 
     SpriteRender* groundLayer1 = Add<SpriteRender>();
-    groundLayer1->Init("..\\..\\..\\res\\Sprite\\groundLayer1.png", {960, 1000}, { 1.875f, 1});
+    groundLayer1->Init("..\\..\\..\\res\\Sprite\\groundLayer1.png");
     groundLayer1->Awake();
 
     /*SpriteRender* bush1 = Add<SpriteRender>();
@@ -62,5 +62,9 @@ void BackGroundBehaviour::Awake()
 }
 
 void BackGroundBehaviour::Start()
+{
+}
+
+void BackGroundBehaviour::OnCollide()
 {
 }

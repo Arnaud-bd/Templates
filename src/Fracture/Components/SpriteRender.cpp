@@ -4,7 +4,7 @@ SpriteRender::SpriteRender() : Render()
 {
 }
 
-void SpriteRender::Init(const std::string& texturePath, sf::Vector2f _Position, sf::Vector2f _scale)
+void SpriteRender::Init(const std::string& texturePath) 
 {
     if (!texture.loadFromFile(texturePath))
     {
@@ -12,17 +12,10 @@ void SpriteRender::Init(const std::string& texturePath, sf::Vector2f _Position, 
     }
     sprite.setTexture(texture);
     sprite.setOrigin(texture.getSize().x / 2, texture.getSize().y / 2);
-    sprite.setPosition(_Position);
-    sprite.setScale(_scale);
+    todraw = &sprite;
 }
 
 void SpriteRender::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-    states.transform = getTransform();
-    target.draw(sprite, states);
-}
 
-void SpriteRender::move(const sf::Vector2f& newPosition)
-{
-    sprite.setPosition(newPosition);
 }
