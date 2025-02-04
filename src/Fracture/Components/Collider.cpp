@@ -60,17 +60,11 @@ bool Collider::OnTriggerStay(Collider _other)
 
 void Collider::Update()
 {
-    std::vector<Transform2D*> transforms = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<Transform2D>();
+    Transform2D* transforms = Get<Transform2D>();
 
-    for (int i = 0; i < transforms.size(); ++i)
+    for (int j = 0; j < m_Hitboxs.size(); ++j)
     {
-        if (transforms[i]->GetID() == this->GetID())
-        {
-            for (int j = 0; j < m_Hitboxs.size(); ++j)
-            {
-                m_Hitboxs[j]->setPosition(transforms[i]->m_Position + m_HitboxsRelative[j]);
-            }
-        }
+        m_Hitboxs[j]->setPosition(transforms->m_Position + m_HitboxsRelative[j]);
     }
 }
 

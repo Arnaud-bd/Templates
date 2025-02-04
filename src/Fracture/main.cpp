@@ -4,5 +4,4 @@ int main()
 {
 	GameManager* gameManager = GameManager::GetInstance();
 	gameManager->Loop();
-
 }

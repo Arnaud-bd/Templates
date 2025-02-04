@@ -11,108 +11,40 @@ BallBehaviour::BallBehaviour()
 
 void BallBehaviour::Update(float _deltaTime)
 {
-    Scene* scene = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene();
+    Transform2D* playerTransform = Get<Transform2D>();
+    Render* render = Get<Render>();
 
-    std::vector<Transform2D*> transforms = scene->GetAll<Transform2D>();
-    std::vector<Render*> renders = scene->GetAll<Render>();
-    std::vector<Collider*> colliders = scene->GetAll<Collider>();
+    std::cout << " X : " << m_Direction.x << " Y : " << m_Direction.y << std::endl;
+    playerTransform->m_Position.x += m_Direction.x * 500.f * _deltaTime;
+    playerTransform->m_Position.y += m_Direction.y * 500.f * _deltaTime;
 
-    Transform2D* playerTransform = nullptr;
-
-    for (int i = 0; i < transforms.size(); ++i)
+    if (playerTransform->m_Position.x <= 0.f)
     {
-        if (transforms[i]->GetID() == this->GetID())
-        {
-            playerTransform = transforms[i];
-            std::cout << " X : " << m_Direction.x << " Y : " << m_Direction.y << std::endl;
-            transforms[i]->m_Position.x += m_Direction.x * 500.f * _deltaTime;
-            transforms[i]->m_Position.y += m_Direction.y * 500.f * _deltaTime;
-
-            if (transforms[i]->m_Position.x <= 0.f)
-            {
-                transforms[i]->m_Position.x = 0.f;
-                m_Direction.x = -m_Direction.x;
-            }
-
-            if (transforms[i]->m_Position.x >= 1166.f)
-            {
-                transforms[i]->m_Position.x = 1166.f;
-                m_Direction.x = -m_Direction.x;
-            }
-
-            if (transforms[i]->m_Position.y <= 0.f)
-            {
-                transforms[i]->m_Position.y = 0.f;
-                m_Direction.y = -m_Direction.y;
-            }
-
-            if (transforms[i]->m_Position.y >= 978.f)
-            {
-                transforms[i]->m_Position.y = 978.f;
-                m_Direction.y = -m_Direction.y;
-            }
-
-            break;
-        }
+        playerTransform->m_Position.x = 0.f;
+        m_Direction.x = -m_Direction.x;
     }
 
-    for (int i = 0; i < colliders.size(); ++i)
+    if (playerTransform->m_Position.x >= 1166.f)
     {
-        if (colliders[i]->GetID() == this->GetID())
-        {
-            for (int j = 0; j < colliders.size(); ++j)
-            {
-                if (i == j)
-                {
-                    continue;
-                }
+        playerTransform->m_Position.x = 1166.f;
+        m_Direction.x = -m_Direction.x;
+    }
 
-                if (colliders[i]->IsCollide(*colliders[j]))
-                {
-                    std::vector<BrickBehaviour*> bricks = scene->GetAll<BrickBehaviour>(); 
-                    for (int i = 0; i < bricks.size(); ++i)
-                    {
-                        if (bricks[i]->GetID() == colliders[j]->GetID())
-                        {
-                            scene->RemoveComponent(bricks[i]);
-                        }
-                    }
+    if (playerTransform->m_Position.y <= 0.f)
+    {
+        playerTransform->m_Position.y = 0.f;
+        m_Direction.y = -m_Direction.y;
+    }
 
-                    if (m_Direction.x > 0 && m_Direction.y > 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-
-                    else if (m_Direction.x > 0 && m_Direction.y < 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-
-                    else if (m_Direction.x < 0 && m_Direction.y < 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-
-                    else if (m_Direction.x < 0 && m_Direction.y > 0)
-                    {
-                        m_Direction.y = -m_Direction.y;
-                    }
-                    return;
-                }
-            }
-        }
+    if (playerTransform->m_Position.y >= 978.f)
+    {
+        playerTransform->m_Position.y = 978.f;
+        m_Direction.y = -m_Direction.y;
     }
 
     if (playerTransform)
     {
-        for (auto& render : renders)
-        {
-            if (render->GetID() == this->GetID())
-            {
-                render->move(playerTransform->m_Position);
-                break;
-            }
-        }
+        render->move(playerTransform->m_Position);  //ça non pas ici, c'est le transform2D qui bouge uniquement 
     }
 }
 

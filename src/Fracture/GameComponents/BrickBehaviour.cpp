@@ -23,7 +23,6 @@ void BrickBehaviour::Awake()
     c->AddHitbox({ -16,0 }, 14);
     c->AddHitbox({ 0,0 }, 14);
     c->AddHitbox({ 16,0 }, 14);
-
     c->Awake();
 
     SpriteRender* s = Add<SpriteRender>();

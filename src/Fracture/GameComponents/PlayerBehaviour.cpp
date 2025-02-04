@@ -9,41 +9,19 @@ PlayerBehaviour::PlayerBehaviour()
 
 void PlayerBehaviour::Update(float _deltaTime)
 {
-    Scene* scene = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene();
+    Transform2D* playerTransform = Get<Transform2D>();
+    Render* render = Get<Render>(); 
 
-    std::vector<Transform2D*> transforms = scene->GetAll<Transform2D>();
-    std::vector<Render*> renders = scene->GetAll<Render>(); 
-
-    Transform2D* playerTransform = nullptr;
-
-    for (int i = 0; i < transforms.size(); ++i)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && playerTransform->m_Position.x < 800)
     {
-        if (transforms[i]->GetID() == this->GetID())
-        {
-            playerTransform = transforms[i];
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && transforms[i]->m_Position.x < 800)
-            {
-                transforms[i]->m_Position.x += 500 * 1 * _deltaTime;
-            }
-            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && transforms[i]->m_Position.x > 100)
-            {
-                transforms[i]->m_Position.x += 500 * -1 * _deltaTime;
-            }
-            break;
-        }
+        playerTransform->m_Position.x += 500 * 1 * _deltaTime;
     }
-
-    if (playerTransform)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && playerTransform->m_Position.x > 100)
     {
-        for (int i = 0; i < renders.size(); ++i)
-        {
-            if (renders[i]->GetID() == this->GetID())
-            {
-                renders[i]->move(playerTransform->m_Position);
-                break;
-            }
-        }
+        playerTransform->m_Position.x += 500 * -1 * _deltaTime;
     }
+     
+    render->move(playerTransform->m_Position); //Toujours pas là 
 }
 
 void PlayerBehaviour::Awake()
