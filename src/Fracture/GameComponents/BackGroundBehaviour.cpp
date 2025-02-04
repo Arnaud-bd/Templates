@@ -14,27 +14,29 @@ void BackGroundBehaviour::Update(float _deltaTime)
 
 void BackGroundBehaviour::Awake()
 {
-    SpriteRender* groundLayer1 = Add<SpriteRender>();
-    groundLayer1->Init("..\\..\\..\\res\\Sprite\\groundLayer1.png", {900, 900}, { 1, 1});
-    groundLayer1->Awake();
-
-    SpriteRender* groundLayer2 = Add<SpriteRender>();
-    groundLayer2->Init("..\\..\\..\\res\\Sprite\\groundLayer2.png", { 700, 700 }, { 1,1 });
-    groundLayer2->Awake();
-
-    SpriteRender* hills = Add<SpriteRender>();
-    hills->Init("..\\..\\..\\res\\Sprite\\hills.png", { 800, 800 }, { 1,1 });
-    hills->Awake();
-
-    SpriteRender* cloudLayer1 = Add<SpriteRender>();
-    cloudLayer1->Init("..\\..\\..\\res\\Sprite\\cloudLayer1.png", { 900, 900}, { 1,1 });
-    cloudLayer1->Awake();
 
     SpriteRender* cloudLayer2 = Add<SpriteRender>();
-    cloudLayer2->Init("..\\..\\..\\res\\Sprite\\cloudLayer2.png", { 1000, 1000 }, { 1,1 });
+    cloudLayer2->Init("..\\..\\..\\res\\Sprite\\cloudLayer2.png", { 960, 400 }, { 1.875f,1 });
     cloudLayer2->Awake();
 
-    SpriteRender* bush1 = Add<SpriteRender>();
+
+    SpriteRender* cloudLayer1 = Add<SpriteRender>();
+    cloudLayer1->Init("..\\..\\..\\res\\Sprite\\cloudLayer1.png", { 960, 600 }, { 1.875f,1 });
+    cloudLayer1->Awake();
+
+    SpriteRender* hills = Add<SpriteRender>();
+    hills->Init("..\\..\\..\\res\\Sprite\\hills.png", { 960, 700 }, { 1.875f,1 });
+    hills->Awake();
+
+    SpriteRender* groundLayer2 = Add<SpriteRender>();
+    groundLayer2->Init("..\\..\\..\\res\\Sprite\\groundLayer2.png", { 960, 800 }, { 1.875f,1 });
+    groundLayer2->Awake();
+
+    SpriteRender* groundLayer1 = Add<SpriteRender>();
+    groundLayer1->Init("..\\..\\..\\res\\Sprite\\groundLayer1.png", {960, 1000}, { 1.875f, 1});
+    groundLayer1->Awake();
+
+    /*SpriteRender* bush1 = Add<SpriteRender>();
     bush1->Init("..\\..\\..\\res\\Sprite\\bush.png", { 540, 984}, { 1,1 });
     bush1->Awake();
 
@@ -56,7 +58,7 @@ void BackGroundBehaviour::Awake()
 
     SpriteRender* cloud2 = Add<SpriteRender>();
     cloud2->Init("..\\..\\..\\res\\Sprite\\cloud.png", { 1750, 740 }, { 1,1 });
-    cloud2->Awake();
+    cloud2->Awake();*/
 }
 
 void BackGroundBehaviour::Start()
