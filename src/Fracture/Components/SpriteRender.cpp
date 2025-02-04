@@ -15,7 +15,7 @@ void SpriteRender::Init(const std::string& texturePath)
     todraw = &sprite;
 }
 
-void SpriteRender::draw(sf::RenderTarget& target, sf::RenderStates states) const //Dans le Render pas ici
+void SpriteRender::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 
 }

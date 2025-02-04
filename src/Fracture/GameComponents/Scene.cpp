@@ -109,9 +109,9 @@ void Scene::Physic()
 
 void Scene::Drawing(sf::RenderWindow* _render)
 {
-    _render->clear(sf::Color(0, 0, 0, 255));
+    _render->clear(sf::Color(207, 239, 252, 255));
 
-    std::vector<Render*> renders = GetAll<Render>();
+   std::vector<Render*> renders = GetAll<Render>();
 
     for (size_t i = 0; i < renders.size(); ++i) 
 	{
