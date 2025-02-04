@@ -20,6 +20,7 @@ public:
 
 	bool OnTriggerStay(Collider _other);
 
+	void Update();
 	void Awake() override;
 	void Start() override;
 };

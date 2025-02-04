@@ -66,7 +66,7 @@ void BallBehaviour::Update(float _deltaTime)
                     continue;
                 }
 
-                if (colliders[i]->IsCollide(*colliders[j]))
+                if ((colliders[i]->IsCollide(*colliders[j])) == true)
                 {
                     std::cout << "coucou" << std::endl;
                     /*colliders[j].isDead = true;*/

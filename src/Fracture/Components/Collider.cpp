@@ -55,6 +55,22 @@ bool Collider::OnTriggerStay(Collider _other)
     return false;
 }
 
+void Collider::Update()
+{
+    std::vector<Transform2D*> transforms = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<Transform2D>();
+
+    for (int i = 0; i < transforms.size(); ++i)
+    {
+        if (transforms[i]->GetID() == this->GetID())
+        {
+            for (int j = 0; j < m_Hitboxs.size(); ++j)
+            {
+                m_Hitboxs[j]->setPosition(transforms[i].m_position);
+            }
+        }
+    }
+}
+
 void Collider::Awake()
 {
 }
