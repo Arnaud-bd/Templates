@@ -57,3 +57,13 @@ int GameManager::Loop()
     delete m_SceneManager;  
     return 0;
 }
+
+void GameManager::IncreaseScore(int _score)
+{
+    m_Score += _score;
+}
+
+int GameManager::GetScore()
+{
+    return m_Score;
+}

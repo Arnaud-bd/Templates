@@ -22,6 +22,7 @@ public:
 	void RemoveComponent(Component* _component);
 	Transform2D* CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation);
 
+	void Destroy();
 
 	void Update(float _deltaTime);
 

@@ -31,10 +31,10 @@ void PlayerBehaviour::Awake()
     c->AddHitbox({ -54,0 }, 20);
     c->AddHitbox({ -36,0 }, 20);
     c->AddHitbox({ -18,0 }, 20);
-    c->AddHitbox({ 0,0 }, 20);
-    c->AddHitbox({ 18,0 }, 20);
-    c->AddHitbox({ 36,0 }, 20);
-    c->AddHitbox({ 54,0 }, 20);
+    c->AddHitbox({   0,0 }, 20);
+    c->AddHitbox({  18,0 }, 20);
+    c->AddHitbox({  36,0 }, 20);
+    c->AddHitbox({  54,0 }, 20);
 
     c->Awake();
 }

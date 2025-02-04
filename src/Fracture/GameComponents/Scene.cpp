@@ -82,9 +82,21 @@ Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, fl
 	return transform;
 }
 
+void Scene::Destroy()
+{
+	for (int i = m_ComponentsList.size() - 1; i > 0 ; --i)
+	{
+		if (m_ComponentsList[i]->IsDestroy())
+		{
+			delete(m_ComponentsList[i]);
+			m_ComponentsList.erase(m_ComponentsList.begin() + i);
+		}
+	}
+}
+
 void Scene::Update(float _deltaTime)
 {
-	for (int i = m_ComponentsList.size() - 1; i < 0; --i)
+	for (int i = m_ComponentsList.size() - 1; i >= 0; --i)
 	{
 		if (Behaviour* b = dynamic_cast<Behaviour*>(m_ComponentsList[i]))
 			b->Update(_deltaTime);
@@ -101,10 +113,12 @@ void Scene::Physic()
 			if (colliders[i]->IsCollide(*colliders[j]) && colliders[i] != colliders[j])
 			{
 				colliders[i]->Get<Behaviour>()->OnCollide();
-				colliders[j]->Get<Behaviour>()->OnCollide(); 
+				colliders[j]->Get<Behaviour>()->OnCollide();
 			}
 		}
 	}
+
+	Destroy();
 }
 
 void Scene::Drawing(sf::RenderWindow* _render)

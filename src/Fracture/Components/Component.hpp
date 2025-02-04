@@ -8,6 +8,7 @@ class Component
 {
 	uint64_t m_ID;
 	std::string m_tag;
+	bool m_toDestroy = false;
 
 public:
 	Component();
@@ -20,6 +21,8 @@ public:
 	std::vector<_type*> GetAll();
 	
 	uint64_t GetID() const;
+	void ToDestroy();
+	bool IsDestroy();
 	void SetID(uint64_t _ID);
 	virtual void Awake() = 0;
 	virtual void Start() = 0;

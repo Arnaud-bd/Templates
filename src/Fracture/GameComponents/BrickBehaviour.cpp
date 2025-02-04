@@ -38,5 +38,6 @@ void BrickBehaviour::Start()
 
 void BrickBehaviour::OnCollide()
 {
-
+    this->ToDestroy();
+    GameManager::GetInstance()->IncreaseScore(150);
 }
