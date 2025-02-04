@@ -10,6 +10,7 @@ BackGroundBehaviour::BackGroundBehaviour()
 
 void BackGroundBehaviour::Update(float _deltaTime)
 {
+
 }
 
 void BackGroundBehaviour::Awake()
@@ -19,10 +20,9 @@ void BackGroundBehaviour::Awake()
     cloudLayer2->Init("..\\..\\..\\res\\Sprite\\cloudLayer2.png");
     cloudLayer2->Awake();
 
-
-    SpriteRender* cloudLayer1 = Add<SpriteRender>();
-    cloudLayer1->Init("..\\..\\..\\res\\Sprite\\cloudLayer1.png");
-    cloudLayer1->Awake();
+    SpriteRender* cloudLayer1 = Add<SpriteRender>(); 
+    cloudLayer1->Init("..\\..\\..\\res\\Sprite\\cloudLayer1.png"); 
+    cloudLayer1->Awake(); 
 
     SpriteRender* hills = Add<SpriteRender>();
     hills->Init("..\\..\\..\\res\\Sprite\\hills.png");

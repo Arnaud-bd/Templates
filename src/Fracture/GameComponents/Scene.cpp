@@ -23,10 +23,10 @@ Scene::~Scene()
 void Scene::Init()
 {
 
-	Transform2D* backGround = CreateEntity({ 500, 594 }, 1, 0);
+	Transform2D* backGround = CreateEntity({ 500, 594 }, {1,1}, 0);
 	BackGroundBehaviour* backGroundBehaviour = backGround->Add<BackGroundBehaviour>();
 
-	Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
+	Transform2D* gameobject = CreateEntity({ 100, 800 }, { 1,1 }, 0);
 	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
 
 	const int rows = 10;				// Nombre de rang�es de briques
@@ -45,15 +45,13 @@ void Scene::Init()
 		for (int col = 0; col < cols; ++col)
 		{
 			float x = startX + col * (brickWidth + gap);
-			Transform2D* gameobject = CreateEntity({ x, y }, 1, 0);
+			Transform2D* gameobject = CreateEntity({ x, y }, {1, 1}, 0);
 			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
 		}
 	}
 
-	Transform2D* ball = CreateEntity({ 500, 500 }, 1, 0);
+	Transform2D* ball = CreateEntity({ 500, 500 }, { 1,1 }, 0);
 	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
-
-
 }
 
 void Scene::AddComponent(Component* _component)
@@ -73,7 +71,7 @@ void Scene::RemoveComponent(Component* _component)
 	}
 }
 
-Transform2D* Scene::CreateEntity(sf::Vector2f _position, float _scale, float _rotation)
+Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation)
 {
 	Transform2D* transform = new Transform2D();
 	transform->Init(_position, _scale, _rotation, m_ComponentsList.size()+1);
@@ -111,7 +109,7 @@ void Scene::Physic()
 
 void Scene::Drawing(sf::RenderWindow* _render)
 {
-    _render->clear(sf::Color(207, 239, 252, 255));
+    _render->clear(sf::Color(0, 0, 0, 255));
 
     std::vector<Render*> renders = GetAll<Render>();
 

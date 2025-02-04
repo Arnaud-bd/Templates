@@ -9,22 +9,22 @@ PlayerBehaviour::PlayerBehaviour()
 
 void PlayerBehaviour::Update(float _deltaTime)
 {
-    Transform2D* playerTransform = Get<Transform2D>();
+    Transform2D* Transform = Get<Transform2D>();
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && playerTransform->m_Position.x < 800)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && Transform->getPosition().x < 800)
     {
-        playerTransform->m_Position.x += 500 * 1 * _deltaTime;
+        Transform->setPosition(Transform->getPosition().x + 500 * 1 * _deltaTime, Transform->getPosition().y);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && playerTransform->m_Position.x > 100)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Transform->getPosition().x > 100)
     {
-        playerTransform->m_Position.x += 500 * -1 * _deltaTime;
+        Transform->setPosition(Transform->getPosition().x + 500 * -1 * _deltaTime, Transform->getPosition().y);
     }
 }
 
 void PlayerBehaviour::Awake()
 {
     SpriteRender* s = Add<SpriteRender>();
-    s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png", { 900, 900 }, { 1,1 });
+    s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png");
     s->Awake();
     Collider* c = Add<Collider>();
 

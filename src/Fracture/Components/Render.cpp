@@ -13,6 +13,7 @@ void Render::Start()
 
 void Render::Awake()
 {
+
 }
 
 
