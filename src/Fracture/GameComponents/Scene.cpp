@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include "../GameComponents/BackGroundBehaviour.h"
 #include "../GameComponents/PlayerBehaviour.h"
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"
@@ -21,6 +22,10 @@ Scene::~Scene()
 
 void Scene::Init()
 {
+
+	Transform2D* backGround = CreateEntity({ 500, 594 }, 1, 0);
+	BackGroundBehaviour* backGroundBehaviour = backGround->Add<BackGroundBehaviour>();
+
 	Transform2D* gameobject = CreateEntity({ 100, 800 }, 1, 0);
 	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Cr�ation du joueurs
 
@@ -47,6 +52,8 @@ void Scene::Init()
 
 	Transform2D* ball = CreateEntity({ 500, 500 }, 1, 0);
 	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
+
+
 }
 
 void Scene::AddComponent(Component* _component)
@@ -78,7 +85,7 @@ void Scene::Update(float _deltaTime)
 
 void Scene::Drawing(sf::RenderWindow* _render)
 {
-    _render->clear(sf::Color::Black);
+    _render->clear(sf::Color(207, 239, 252, 255));
 
     std::vector<Render*> renders = GetAll<Render>();
 

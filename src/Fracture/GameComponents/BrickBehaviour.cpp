@@ -19,7 +19,7 @@ void BrickBehaviour::Awake()
     c->Awake();
 
     SpriteRender* s = Add<SpriteRender>();
-    s->Init("..\\..\\..\\res\\Sprite\\element_red_rectangle.png");
+    s->Init("..\\..\\..\\res\\Sprite\\element_red_rectangle.png", {300,300}, {1,1});
     s->Awake();
 }
 
