@@ -26,11 +26,6 @@ bool Collider::IsCollide(Collider _other)
     {
         for (int j = 0; j < _other.m_Hitboxs.size(); j++)
         {
-            if (m_Hitboxs[i] == m_Hitboxs[j])
-            {
-                continue;
-            }
-
             sf::Vector2f distanceVector = _other.m_Hitboxs[j]->getPosition() - m_Hitboxs[i]->getPosition();
 
             float distance = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));

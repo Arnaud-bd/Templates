@@ -29,13 +29,7 @@ void PlayerBehaviour::Awake()
     s->Awake();
     Collider* c = Add<Collider>();
 
-    c->AddHitbox({ -54,0 }, 20);
-    c->AddHitbox({ -36,0 }, 20);
-    c->AddHitbox({ -18,0 }, 20);
-    c->AddHitbox({   0,0 }, 20);
-    c->AddHitbox({  18,0 }, 20);
-    c->AddHitbox({  36,0 }, 20);
-    c->AddHitbox({  54,0 }, 20);
+    c->AddHitbox({   0,0 }, 30);
 
     c->Awake();
 }
