@@ -108,7 +108,7 @@ void Scene::Physic()
 	std::vector<Collider*> colliders = this->GetAll<Collider>();
 	for (int i = 0; i < colliders.size(); ++i)
 	{
-		for (int j = 0; j < colliders.size(); ++j)
+		for (int j = i + 1; j < colliders.size(); ++j) 
 		{
 			if (colliders[i]->IsCollide(*colliders[j]) && colliders[i] != colliders[j])
 			{

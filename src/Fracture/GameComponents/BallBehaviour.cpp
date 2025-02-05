@@ -10,7 +10,6 @@ BallBehaviour::BallBehaviour()
 
 void BallBehaviour::Update(float _deltaTime)
 {
-    
     Transform2D* Transform = Get<Transform2D>();
     sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
@@ -65,20 +64,24 @@ void BallBehaviour::OnCollide()
     if (m_Direction.x > 0 && m_Direction.y > 0)
     {
         m_Direction.y = -m_Direction.y;
+        return;
     }
 
-    else if (m_Direction.x > 0 && m_Direction.y < 0)
+    if (m_Direction.x > 0 && m_Direction.y < 0)
     {
         m_Direction.y = -m_Direction.y;
+        return;
     }
 
-    else if (m_Direction.x < 0 && m_Direction.y < 0)
+    if (m_Direction.x < 0 && m_Direction.y < 0)
     {
         m_Direction.y = -m_Direction.y;
+        return;
     }
 
-    else if (m_Direction.x < 0 && m_Direction.y > 0)
+    if (m_Direction.x < 0 && m_Direction.y > 0)
     {
         m_Direction.y = -m_Direction.y;
+        return;
     }
 }
