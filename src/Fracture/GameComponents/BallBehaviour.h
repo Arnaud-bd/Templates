@@ -5,6 +5,7 @@
 class BallBehaviour : public Behaviour
 {
 	sf::Vector2f m_Direction;
+	sf::Vector2f m_PreviousPosition;
 
 public:
 	BallBehaviour();
