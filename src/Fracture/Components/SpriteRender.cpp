@@ -2,6 +2,7 @@
 
 SpriteRender::SpriteRender() : Render()
 {
+
 }
 
 void SpriteRender::Init(const std::string& texturePath) 

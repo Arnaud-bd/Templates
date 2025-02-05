@@ -3,6 +3,7 @@
 #include "../GameComponents/PlayerBehaviour.h"
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"
+#include "../GameComponents/ScoreBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 #include "../Components/Collider.h"
@@ -29,11 +30,17 @@ void Scene::Init()
 	Transform2D* gameobject = CreateEntity({ 100, 800 }, { 1,1 }, 0);
 	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
 
+	Transform2D* ball = CreateEntity({ 500, 500 }, { 1,1 }, 0);
+	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
+
+	Transform2D* UIScore = CreateEntity({ 100, 100 }, { 1,1 }, 0);
+	ScoreBehaviour* scoreBehaviour = UIScore->Add<ScoreBehaviour>(); 
+
 	const int rows = 10;				// Nombre de rang�es de briques
 	const int cols = 10;				// Nombre de briques par rang�e
 	const float brickWidth = 50.0f;		// Largeur de la brique
 	const float brickHeight = 20.0f;	// Hauteur de la brique
-	const float gap = 30.0f;			// Espace entre les briques
+	const float gap = 20.0f;			// Espace entre les briques
 
 	const float startX = 200.0f;
 	const float startY = 500.0f;
@@ -49,9 +56,6 @@ void Scene::Init()
 			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
 		}
 	}
-
-	Transform2D* ball = CreateEntity({ 500, 500 }, { 1,1 }, 0);
-	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
 }
 
 void Scene::AddComponent(Component* _component)

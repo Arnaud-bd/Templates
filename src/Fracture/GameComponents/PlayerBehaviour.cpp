@@ -27,6 +27,7 @@ void PlayerBehaviour::Awake()
     SpriteRender* s = Add<SpriteRender>();
     s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png");
     s->Awake();
+
     Collider* c = Add<Collider>();
 
     c->AddHitbox({   0,0 }, 30);

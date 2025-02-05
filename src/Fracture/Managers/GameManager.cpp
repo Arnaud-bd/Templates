@@ -1,5 +1,6 @@
 #include "GameManager.h"
 #include "../Components/SpriteRender.h"
+#include "../Components/TextRender.h"
 
 GameManager* GameManager::m_Instance = nullptr;
 

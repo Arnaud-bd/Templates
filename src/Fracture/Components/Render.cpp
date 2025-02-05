@@ -3,7 +3,10 @@
 
 void Render::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 {
-	states.transform.combine(Get<Transform2D>()->getTransform());
+	if (Get<Transform2D>())
+	{
+		states.transform.combine(Get<Transform2D>()->getTransform());
+	}
 	target.draw(*todraw, states);
 }
 
