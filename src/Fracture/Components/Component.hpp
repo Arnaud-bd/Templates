@@ -55,7 +55,7 @@ _type* Component::Get() const
 template<typename _type>
 inline std::vector<_type*> Component::GetAll()
 {
-	std::vector<_type*> ComponentList = GameManager::GetInstance().GetCurrentScene().GetAll<_type>();
+	std::vector<_type*> ComponentList = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<_type>();
 	std::vector<_type*> resultList; 
 	for (int i = 0; i < ComponentList.size(); ++i)
 	{

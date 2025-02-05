@@ -36,6 +36,10 @@ void BrickBehaviour::Start()
 
 void BrickBehaviour::OnCollide()
 {
-    this->ToDestroy();
+    std::vector<Component*> sameID = GetAll<Component>();
+    for (int i = 0; i < sameID.size(); ++i)
+    {
+        sameID[i]->ToDestroy();
+    }
     GameManager::GetInstance()->IncreaseScore(150);
 }
