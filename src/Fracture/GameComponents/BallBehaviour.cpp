@@ -11,6 +11,7 @@ BallBehaviour::BallBehaviour()
 void BallBehaviour::Update(float _deltaTime)
 {
     Transform2D* Transform = Get<Transform2D>();
+    m_PreviousPosition = Transform->getPosition();
     sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
     float x = Transform->getPosition().x + m_Direction.x * 500.f * _deltaTime;
@@ -61,25 +62,15 @@ void BallBehaviour::Start()
 
 void BallBehaviour::OnCollide()
 {
-    if (m_Direction.x > 0 && m_Direction.y > 0)
+    sf::Vector2f currentPosition = Get<Transform2D>()->getPosition();
+    sf::Vector2f delta = currentPosition - m_PreviousPosition;
+
+    if (std::abs(delta.x) > std::abs(delta.y))
     {
-        m_Direction.y = -m_Direction.y;
+        m_Direction.x = -m_Direction.x;
         return;
     }
-
-    if (m_Direction.x > 0 && m_Direction.y < 0)
-    {
-        m_Direction.y = -m_Direction.y;
-        return;
-    }
-
-    if (m_Direction.x < 0 && m_Direction.y < 0)
-    {
-        m_Direction.y = -m_Direction.y;
-        return;
-    }
-
-    if (m_Direction.x < 0 && m_Direction.y > 0)
+    else
     {
         m_Direction.y = -m_Direction.y;
         return;
