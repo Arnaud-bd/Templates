@@ -67,3 +67,8 @@ int GameManager::GetScore()
 {
     return m_Score;
 }
+
+sf::RenderWindow* GameManager::GetWindow()
+{
+    return &m_Window;
+}

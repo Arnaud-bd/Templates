@@ -24,6 +24,7 @@ public:
 	int Loop();
 	void IncreaseScore(int _score);
 	int GetScore();
+	sf::RenderWindow* GetWindow();
 
 };
 

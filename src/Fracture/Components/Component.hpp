@@ -16,7 +16,7 @@ public:
 	template <typename _type>
 	_type* Add();
 	template <typename _type>
-	_type* Get();
+	_type* Get() const;
 	template <typename _type>
 	std::vector<_type*> GetAll();
 	
@@ -39,7 +39,7 @@ inline _type* Component::Add()
 }
 
 template<typename _type>
-_type* Component::Get()
+_type* Component::Get() const
 {
 	std::vector<_type*> ComponentList = GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<_type>();
 	for (int i = 0; i < ComponentList.size(); ++i)

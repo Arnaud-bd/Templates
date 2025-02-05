@@ -10,12 +10,13 @@ PlayerBehaviour::PlayerBehaviour()
 void PlayerBehaviour::Update(float _deltaTime)
 {
     Transform2D* Transform = Get<Transform2D>();
+    sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && Transform->getPosition().x < 800)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && Transform->getPosition().x < window->getSize().x)
     {
         Transform->setPosition(Transform->getPosition().x + 500 * 1 * _deltaTime, Transform->getPosition().y);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Transform->getPosition().x > 100)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Transform->getPosition().x > 0.f)
     {
         Transform->setPosition(Transform->getPosition().x + 500 * -1 * _deltaTime, Transform->getPosition().y);
     }
