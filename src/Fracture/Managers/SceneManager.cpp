@@ -1,13 +1,48 @@
 #include "SceneManager.h"
+#include "GameManager.h"
+#include "../GameComponents/GameScene.h"
+#include "../Components/Component.hpp"
 
+SceneManager::SceneManager()
+{
+	for (int i = 0; i < GameManager::GAMESTATE::LOOSE; ++i)
+	{
+		Scene* s = new GameScene();
+		AddScene(s);
+		m_ScenesList[i] = s;
+	}
+	m_CurrentScene = 0;
+}
 
 Scene* SceneManager::GetCurrentScene()
 {
-	return m_ScenesList[0];
+	return m_ScenesList[m_CurrentScene];
 }
 
-void SceneManager::SetCurrentScene(Scene* CurrentScene)
+int SceneManager::GetCurrentSceneState()
 {
-	m_ScenesList.push_back(CurrentScene);
-	m_CurrentScene = CurrentScene;
+	return m_CurrentScene;
+}
+
+void SceneManager::SetCurrentSceneState(int i)
+{
+	 m_CurrentScene = i;
+}
+
+Scene* SceneManager::SetCurrentScene(int i)
+{
+	m_ScenesList[m_CurrentScene]->RemoveAllComponent();
+	m_ScenesList[m_CurrentScene] = m_ScenesList.find(i)->second; 
+	m_ScenesList[m_CurrentScene]->Init();
+	std::vector<Component*> vect = m_ScenesList[m_CurrentScene]->GetAll<Component>();
+	for (int i = 0; i < vect.size(); i++)
+	{
+		vect[i]->Start();
+	}
+	return m_ScenesList[m_CurrentScene];
+}
+
+void SceneManager::AddScene(Scene* _Scene)
+{
+	m_ScenesList[m_ScenesList.size()] = _Scene; 
 }
