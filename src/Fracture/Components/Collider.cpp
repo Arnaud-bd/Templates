@@ -14,6 +14,7 @@ Collider::~Collider()
     }
 }
 
+//Ajoute une hitbox au vecteur
 void Collider::AddHitbox(sf::Vector2f _position, float _radius)
 {
     sf::CircleShape* c = new sf::CircleShape();
@@ -26,6 +27,7 @@ void Collider::AddHitbox(sf::Vector2f _position, float _radius)
     m_HitboxsRelative.push_back(_position);
 }
 
+//Vérifie si il y a collision entre deux hitboxs
 bool Collider::IsCollide(Collider* _other)
 {
     for (int i = 0; i < m_Hitboxs.size(); i++)
@@ -46,21 +48,6 @@ bool Collider::IsCollide(Collider* _other)
 void Collider::OnCollideEnter(Collider* _other)
 {
 
-}
-
-bool Collider::OnTriggerEnter(Collider* _other)
-{
-    return false;
-}
-
-bool Collider::OnTriggerExit(Collider* _other)
-{
-    return false;
-}
-
-bool Collider::OnTriggerStay(Collider* _other)
-{
-    return false;
 }
 
 void Collider::Update(float _deltaTime)

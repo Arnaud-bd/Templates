@@ -1,8 +1,6 @@
 #include "CloudLayer2Behaviour.h"
-#include "../Components/Transform2D.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
-#include <iostream>
 
 CloudLayer2Behaviour::CloudLayer2Behaviour()
 {

@@ -17,9 +17,6 @@ public:
 
 	bool IsCollide(Collider* _other);
 	void OnCollideEnter(Collider* _other);
-	bool OnTriggerEnter(Collider* _other);
-	bool OnTriggerExit(Collider* _other);
-	bool OnTriggerStay(Collider* _other);
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

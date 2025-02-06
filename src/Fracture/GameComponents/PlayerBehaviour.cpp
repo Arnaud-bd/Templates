@@ -1,7 +1,6 @@
 #include "PlayerBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
-#include <iostream>
 
 PlayerBehaviour::PlayerBehaviour()
 {
@@ -29,7 +28,6 @@ void PlayerBehaviour::Awake()
     Collider* c = Add<Collider>();
     c->Start();
     c->AddHitbox({   0,0 }, 30);
-
 }
 
 void PlayerBehaviour::Start()

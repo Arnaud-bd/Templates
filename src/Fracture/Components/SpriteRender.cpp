@@ -5,6 +5,7 @@ SpriteRender::SpriteRender() : Render()
 
 }
 
+//Initialise le sprite
 void SpriteRender::Init(const std::string& texturePath) 
 {
     if (!texture.loadFromFile(texturePath))

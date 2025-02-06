@@ -9,7 +9,6 @@ class ScoreBehaviour : public Behaviour
 	TextRender* t;
 
 public:
-
 	ScoreBehaviour();
 
 	void Update(float _deltaTime) override;

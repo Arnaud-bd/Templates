@@ -1,8 +1,8 @@
 #include "BrickBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
-
 #include <iostream>
+
 BrickBehaviour::BrickBehaviour()
 {
 
@@ -34,6 +34,7 @@ void BrickBehaviour::Start()
 {
 }
 
+//Sert à effectuer les actions après une collision
 void BrickBehaviour::OnCollideEnter(Collider* _other)
 {
     std::vector<Component*> sameID = GetAll<Component>();

@@ -6,11 +6,10 @@
 
 class TextRender : public Render
 {
-public:
-
     sf::Font m_font;
     sf::Text m_text;
 
+public:
     TextRender();
 
     void Init();

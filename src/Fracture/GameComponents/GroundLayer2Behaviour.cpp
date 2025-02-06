@@ -1,8 +1,6 @@
 #include "GroundLayer2Behaviour.h"
-#include "../Components/Transform2D.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
-#include <iostream>
 
 GroundLayer2Behaviour::GroundLayer2Behaviour()
 {

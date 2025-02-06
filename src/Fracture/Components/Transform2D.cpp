@@ -4,6 +4,7 @@ Transform2D::Transform2D()
 {
 }
 
+//Initialise le transform2D
 void Transform2D::Init(sf::Vector2f _position, sf::Vector2f _scale, float _rotation, int _ID)
 {
 	setPosition(_position);

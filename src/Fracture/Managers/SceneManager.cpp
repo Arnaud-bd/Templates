@@ -29,6 +29,7 @@ void SceneManager::SetCurrentSceneState(int i)
 	 m_CurrentScene = i;
 }
 
+//Défini la scène actuelle
 Scene* SceneManager::SetCurrentScene(int i)
 {
 	m_ScenesList[m_CurrentScene]->RemoveAllComponent();

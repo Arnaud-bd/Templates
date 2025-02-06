@@ -8,7 +8,6 @@ class Component;
 class Scene
 {
 	std::vector<Component*> m_ComponentsList;
-	std::vector<Component*> m_destroyer;
 	std::vector<std::pair<Component*, Component*>> m_lastColliders;
 	int m_CurrentID = 0;
 
@@ -21,7 +20,6 @@ public:
 
 	virtual void Init() = 0;
 	void AddComponent(Component* _component);
-	void RemoveComponent(Component* _component);
 	void RemoveAllComponent();
 	Transform2D* CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation);
 	void Destroy();
@@ -30,6 +28,7 @@ public:
 	void Drawing(sf::RenderWindow* _render);
 };
 
+//Récupère tous les Component du même type
 template<typename _type>
 inline std::vector<_type*> Scene::GetAll()
 {

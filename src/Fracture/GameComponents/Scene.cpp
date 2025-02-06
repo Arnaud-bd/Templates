@@ -1,9 +1,4 @@
 #include "Scene.hpp"
-#include "../GameComponents/TreeBehaviour.h"
-#include "../GameComponents/PlayerBehaviour.h"
-#include "../GameComponents/BrickBehaviour.h"
-#include "../GameComponents/BallBehaviour.h"
-#include "../GameComponents/ScoreBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 #include "../Components/Collider.h"
@@ -26,18 +21,7 @@ void Scene::AddComponent(Component* _component)
 	m_ComponentsList.push_back(_component);
 }
 
-void Scene::RemoveComponent(Component* _component)
-{
-	int id = _component->GetID();
-	for (int i = m_ComponentsList.size() - 1; i >= 0; --i)
-	{
-		if (m_ComponentsList[i]->GetID() == id)
-		{
-			m_destroyer.push_back(m_ComponentsList[i]);
-		}
-	}
-}
-
+//Détruit tous les components du même ID 
 void Scene::RemoveAllComponent()
 {
 	for (int i = 0; i < m_ComponentsList.size(); i++)
@@ -48,6 +32,7 @@ void Scene::RemoveAllComponent()
 	m_CurrentID = 0;
 }
 
+//Crée un transform2D et le renvoie
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation)
 {
 	Transform2D* transform = new Transform2D();
@@ -61,6 +46,7 @@ Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, fl
 	return transform;
 }
 
+//Détruit les éléments à détruire
 void Scene::Destroy()
 {
 	for (int i = m_ComponentsList.size() - 1; i > 0 ; --i)
@@ -82,6 +68,7 @@ void Scene::Update(float _deltaTime)
 	}
 }
 
+//Check les collisions entre tous les colliders de la scène
 void Scene::Physic()
 {
 	std::vector<std::pair<Component*, Component*>> newColliders;
@@ -110,6 +97,7 @@ void Scene::Physic()
 	Destroy();
 }
 
+//appele tous les draw de la scène
 void Scene::Drawing(sf::RenderWindow* _render)
 {
     _render->clear(sf::Color(207, 239, 252, 255));

@@ -49,8 +49,6 @@ int GameManager::Loop()
 
     while (m_Window.isOpen())
     {
-        std::cout << m_GameState;
-
         sf::Time elapsed = clock.restart();
         float deltaTime = elapsed.asSeconds();
 

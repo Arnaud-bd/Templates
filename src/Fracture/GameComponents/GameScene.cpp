@@ -21,8 +21,17 @@ void GameScene::Init()
 	Transform2D* cLTransform = CreateEntity({ 960, 500 }, { 1.875f , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer1Behaviour = cLTransform->Add<CloudLayer1Behaviour>();
 
+	Transform2D* cLTransform = CreateEntity({ 960, 500 }, { 1.875f , 1 }, 0);
+	CloudLayer1Behaviour* cloudLayer1Behaviour = cLTransform->Add<CloudLayer1Behaviour>();
+
 	Transform2D* cL2Transform = CreateEntity({ 960, 600 }, { 1.875f , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer2Behaviour = cL2Transform->Add<CloudLayer1Behaviour>();
+
+	Transform2D* cL2Transform = CreateEntity({ 960, 600 }, { 1.875f , 1 }, 0);
+	CloudLayer1Behaviour* cloudLayer2Behaviour = cL2Transform->Add<CloudLayer1Behaviour>();
+
+	Transform2D* hillsTransform = CreateEntity({ 960, 700 }, { 1.875f , 1 }, 0);
+	HillsBehaviour* hillsBehaviour = hillsTransform->Add<HillsBehaviour>();
 
 	Transform2D* hillsTransform = CreateEntity({ 960, 700 }, { 1.875f , 1 }, 0);
 	HillsBehaviour* hillsBehaviour = hillsTransform->Add<HillsBehaviour>();
@@ -30,20 +39,26 @@ void GameScene::Init()
 	Transform2D* gLTransform = CreateEntity({ 960, 800 }, { 1.875f , 1 }, 0);
 	GroundLayer1Behaviour* groundLayer1Behaviour = gLTransform->Add<GroundLayer1Behaviour>();
 
-	Transform2D* gL2Transform = CreateEntity({ 960, 900 }, { 1.875f , 1 }, 0);
+	Transform2D* gLTransform = CreateEntity({ 960, 800 }, { 1.875f , 1 }, 0);
+	GroundLayer1Behaviour* groundLayer1Behaviour = gLTransform->Add<GroundLayer1Behaviour>();
+
+	Transform2D* tree1Transform = CreateEntity({ 100, 950 }, { 1,1 }, 0);
+	TreeBehaviour* tree1Behaviour = tree1Transform->Add<TreeBehaviour>();
+
+	Transform2D* tree2Transform = CreateEntity({ 1820, 950 }, { 1,1 }, 0);
+	TreeBehaviour* tree2Behaviour = tree2Transform->Add<TreeBehaviour>();
+
+	Transform2D* gL2Transform = CreateEntity({ 960, 1000 }, { 1.875f , 1 }, 0);
 	GroundLayer2Behaviour* groundLayer2Behaviour = gL2Transform->Add<GroundLayer2Behaviour>();
 
-	Transform2D* bush1Transform = CreateEntity({ 200, 950}, { 1,1 }, 0);
+	Transform2D* gL2Transform = CreateEntity({ 960, 1000 }, { 1.875f , 1 }, 0);
+	GroundLayer2Behaviour* groundLayer2Behaviour = gL2Transform->Add<GroundLayer2Behaviour>();
+
+	Transform2D* bush1Transform = CreateEntity({ 200, 950 }, { 1,1 }, 0);
 	BushBehaviour* bush1Behaviour = bush1Transform->Add<BushBehaviour>();
 
 	Transform2D* bush2Transform = CreateEntity({ 1720, 950 }, { 1,1 }, 0);
 	BushBehaviour* bush2Behaviour = bush2Transform->Add<BushBehaviour>();
-
-	Transform2D* tree1Transform = CreateEntity({ 100, 850 }, { 1,1 }, 0);
-	TreeBehaviour* tree1Behaviour = tree1Transform->Add<TreeBehaviour>();
-
-	Transform2D* tree2Transform = CreateEntity({ 1820, 850 }, { 1,1 }, 0);
-	TreeBehaviour* tree2Behaviour = tree2Transform->Add<TreeBehaviour>();
 
 	Transform2D* cloud1Transform = CreateEntity({ 200, 150}, { 1,1 }, 0);
 	CloudBehaviour* cloud1Behaviour = cloud1Transform->Add<CloudBehaviour>();
@@ -52,7 +67,7 @@ void GameScene::Init()
 	CloudBehaviour* cloud2Behaviour = cloud2Transform->Add<CloudBehaviour>();
 
 
-	Transform2D* gameobject = CreateEntity({ 100, 800 }, { 1,1 }, 0);
+	Transform2D* gameobject = CreateEntity({ 100, 1000 }, { 1,1 }, 0);
 	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>();
 
 	Transform2D* ball = CreateEntity({ 500, 500 }, { 1,1 }, 0);
