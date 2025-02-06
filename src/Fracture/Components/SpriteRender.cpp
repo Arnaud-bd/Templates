@@ -9,6 +9,7 @@ sf::Sprite* SpriteRender::GetSprite()
     return &sprite;
 }
 
+//Initialise le sprite
 void SpriteRender::Init(const std::string& texturePath) 
 {
     if (!texture.loadFromFile(texturePath))

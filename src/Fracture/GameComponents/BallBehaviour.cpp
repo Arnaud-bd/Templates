@@ -43,6 +43,7 @@ void BallBehaviour::Update(float _deltaTime)
     }
 }
 
+//Initialise les component liés
 void BallBehaviour::Awake()
 {
     SpriteRender* s = Add<SpriteRender>();
@@ -61,6 +62,7 @@ void BallBehaviour::Start()
     m_transform = Get<Transform2D>();
 }
 
+//Sert à effectuer les actions après une collision
 void BallBehaviour::OnCollideEnter(Collider* _other)
 {
     sf::Vector2f currentPosition = m_transform->getPosition();

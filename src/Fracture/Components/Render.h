@@ -4,9 +4,12 @@
 
 class Render :  public Component, public sf::Drawable
 {
-public:
+protected:
+
     sf::Drawable* todraw;
     Transform2D* mTransform;
+
+public:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 

@@ -1,9 +1,11 @@
 #include "TextRender.h"
+
 TextRender::TextRender()
 {
     todraw = &m_text;
 } 
 
+//Initialise le text
 void TextRender::Init() 
 {
     if (!m_font.loadFromFile("../../../res/GoodMatcha.otf"))
@@ -16,6 +18,7 @@ void TextRender::Init()
     m_text.setOutlineThickness(3);
 }
 
+//Change le texte à afficher
 void TextRender::ChangeText(const std::string& _text)
 {
     m_text.setString(_text); 

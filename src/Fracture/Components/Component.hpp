@@ -29,6 +29,7 @@ public:
 	virtual void Start() = 0;
 };
 
+//Ajoute un component à la scene
 template<typename _type>
 inline _type* Component::Add()
 {
@@ -40,6 +41,7 @@ inline _type* Component::Add()
 	return component;
 }
 
+//Récupère le Component du bon type avec le même ID
 template<typename _type>
 _type* Component::Get() const
 {
@@ -54,6 +56,7 @@ _type* Component::Get() const
 	return nullptr;
 }
 
+//Récupère tous les component du bon type
 template<typename _type>
 inline std::vector<_type*> Component::GetAll()
 {
