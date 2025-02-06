@@ -10,9 +10,10 @@ void TextRender::Init()
     {
     }
     m_text.setFont(m_font);
-    m_text.setCharacterSize(24); 
-    m_text.setFillColor(sf::Color::White);
-
+    m_text.setCharacterSize(35); 
+    m_text.setFillColor(sf::Color(199,0,33,255));
+    m_text.setOutlineColor(sf::Color::White);
+    m_text.setOutlineThickness(3);
 }
 
 void TextRender::ChangeText(const std::string& _text)
