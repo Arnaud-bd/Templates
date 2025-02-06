@@ -18,17 +18,17 @@ void Collider::AddHitbox(sf::Vector2f _position, float _radius)
     m_HitboxsRelative.push_back(_position);
 }
 
-bool Collider::IsCollide(Collider _other)
+bool Collider::IsCollide(Collider* _other)
 {
     for (int i = 0; i < m_Hitboxs.size(); i++)
     {
-        for (int j = 0; j < _other.m_Hitboxs.size(); j++)
+        for (int j = 0; j < _other->m_Hitboxs.size(); j++)
         {
-            sf::Vector2f distanceVector = _other.m_Hitboxs[j]->getPosition() - m_Hitboxs[i]->getPosition();
+            sf::Vector2f distanceVector = _other->m_Hitboxs[j]->getPosition() - m_Hitboxs[i]->getPosition();
 
             float distance = sqrt(pow(distanceVector.x, 2) + pow(distanceVector.y, 2));
 
-            if (distance <= m_Hitboxs[i]->getRadius() + _other.m_Hitboxs[j]->getRadius())
+            if (distance <= m_Hitboxs[i]->getRadius() + _other->m_Hitboxs[j]->getRadius())
                 return true;
         }
     }

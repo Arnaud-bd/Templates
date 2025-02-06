@@ -113,7 +113,7 @@ void Scene::Physic()
 	{
 		for (int j = i + 1; j < colliders.size(); ++j) 
 		{
-			if (colliders[i] != colliders[j] && colliders[i]->IsCollide(*colliders[j]))
+			if (colliders[i] != colliders[j] && colliders[i]->IsCollide(colliders[j]))
 			{
 				std::pair<Collider*, Collider*> c (colliders[i], colliders[j]);
 
