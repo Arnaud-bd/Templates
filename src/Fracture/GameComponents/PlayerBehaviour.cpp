@@ -11,11 +11,11 @@ void PlayerBehaviour::Update(float _deltaTime)
 {
     sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_transform->getPosition().x < window->getSize().x)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_transform->getPosition().x < window->getSize().x - 52.f)
     {
         m_transform->setPosition(m_transform->getPosition().x + 550 * 1 * _deltaTime, m_transform->getPosition().y);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_transform->getPosition().x > 0.f)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_transform->getPosition().x > 52.f)
     {
         m_transform->setPosition(m_transform->getPosition().x + 550 * -1 * _deltaTime, m_transform->getPosition().y);
     }

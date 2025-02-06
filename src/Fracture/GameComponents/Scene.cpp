@@ -1,5 +1,5 @@
 #include "Scene.hpp"
-#include "../GameComponents/BackGroundBehaviour.h"
+#include "../GameComponents/TreeBehaviour.h"
 #include "../GameComponents/PlayerBehaviour.h"
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"

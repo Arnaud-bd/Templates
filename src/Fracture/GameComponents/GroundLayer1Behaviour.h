@@ -1,15 +1,13 @@
 #pragma once
 #include "../Components/Behaviour.h"
 
-class CloudBehaviour : public Behaviour
+class GroundLayer1Behaviour : public Behaviour
 {
 public:
-	CloudBehaviour();
+	GroundLayer1Behaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;
 	void Start() override;
 	void OnCollideEnter(Collider* _other) override;
 };
-
-
