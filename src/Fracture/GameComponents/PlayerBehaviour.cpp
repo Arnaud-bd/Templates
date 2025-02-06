@@ -13,11 +13,11 @@ void PlayerBehaviour::Update(float _deltaTime)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_transform->getPosition().x < window->getSize().x)
     {
-        m_transform->setPosition(m_transform->getPosition().x + 500 * 1 * _deltaTime, m_transform->getPosition().y);
+        m_transform->setPosition(m_transform->getPosition().x + 550 * 1 * _deltaTime, m_transform->getPosition().y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_transform->getPosition().x > 0.f)
     {
-        m_transform->setPosition(m_transform->getPosition().x + 500 * -1 * _deltaTime, m_transform->getPosition().y);
+        m_transform->setPosition(m_transform->getPosition().x + 550 * -1 * _deltaTime, m_transform->getPosition().y);
     }
 }
 

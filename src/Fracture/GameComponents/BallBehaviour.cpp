@@ -13,32 +13,32 @@ void BallBehaviour::Update(float _deltaTime)
     m_PreviousPosition = m_transform->getPosition();
     sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
-    float x = m_transform->getPosition().x + m_Direction.x * 500.f * _deltaTime;
-    float y = m_transform->getPosition().y + m_Direction.y * 500.f * _deltaTime;
+    float x = m_transform->getPosition().x + m_Direction.x * 450.f * _deltaTime;
+    float y = m_transform->getPosition().y + m_Direction.y * 450.f * _deltaTime;
 
     m_transform->setPosition(x, y);
 
-    if (m_transform->getPosition().x <= 0.f)
+    if (m_transform->getPosition().x <= 11.f)
     {
-        m_transform->setPosition(0.f, m_transform->getPosition().y);
+        m_transform->setPosition(11.f, m_transform->getPosition().y);
         m_Direction.x = -m_Direction.x;
     }
 
-    if (m_transform->getPosition().x >= window->getSize().x)
+    if (m_transform->getPosition().x >= window->getSize().x - 11.f)
     {
-        m_transform->setPosition(window->getSize().x, m_transform->getPosition().y);
+        m_transform->setPosition(window->getSize().x - 11.f, m_transform->getPosition().y);
         m_Direction.x = -m_Direction.x;
     }
 
-    if (m_transform->getPosition().y <= 0.f)
+    if (m_transform->getPosition().y <= 11.f)
     {
-        m_transform->setPosition(m_transform->getPosition().x, 0.f);
+        m_transform->setPosition(m_transform->getPosition().x, 11.f);
         m_Direction.y = -m_Direction.y;
     }
 
-    if (m_transform->getPosition().y >= window->getSize().y)
+    if (m_transform->getPosition().y >= window->getSize().y - 11.f)
     {
-        m_transform->setPosition(m_transform->getPosition().x, window->getSize().y);
+        m_transform->setPosition(m_transform->getPosition().x, window->getSize().y - 11.f);
         m_Direction.y = -m_Direction.y;
     }
 }

@@ -117,7 +117,7 @@ void Scene::Physic()
 			{
 				std::pair<Collider*, Collider*> c (colliders[i], colliders[j]);
 
-				if (!(std::find(m_lastColliders.begin(), m_lastColliders.end(), c) != m_lastColliders.end()))
+				if (std::find(m_lastColliders.begin(), m_lastColliders.end(), c) == m_lastColliders.end())
 				{
 					colliders[i]->Get<Behaviour>()->OnCollideEnter(colliders[j]);
 					colliders[j]->Get<Behaviour>()->OnCollideEnter(colliders[i]);
