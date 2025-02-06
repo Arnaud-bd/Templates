@@ -11,6 +11,8 @@ class SpriteRender : public Render
 public:
     SpriteRender();
 
+    sf::Sprite* GetSprite();
+
     void Init(const std::string& texturePath);
 
 };

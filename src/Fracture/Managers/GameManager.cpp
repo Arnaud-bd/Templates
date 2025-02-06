@@ -67,22 +67,6 @@ int GameManager::Loop()
                 m_Window.close();
         }
 
-        if (isPress == false && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        {
-            isPress = true;
-            if (m_GameState < 2)
-            {
-                m_GameState = m_GameState + 1;
-            }
-            else 
-            {
-                m_GameState = 0;
-            }
-        }
-        else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-            isPress = false;
-        }
-
         m_SceneManager->GetCurrentScene()->Update(deltaTime);
         m_SceneManager->GetCurrentScene()->Physic();
         m_SceneManager->GetCurrentScene()->Drawing(&m_Window);

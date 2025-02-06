@@ -4,6 +4,7 @@
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"
 #include "../GameComponents/ScoreBehaviour.h"
+#include "../GameComponents/ButtonBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 #include "../Components/Collider.h"
@@ -21,6 +22,9 @@ void GameScene::Init()
 
 	Transform2D* UIScore = CreateEntity({ 100, 100 }, { 1,1 }, 0);
 	ScoreBehaviour* scoreBehaviour = UIScore->Add<ScoreBehaviour>();
+
+	Transform2D* UIButton = CreateEntity({ 500, 500 }, { 1,1 }, 0);
+	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); 
 
 	const int rows = 10;
 	const int cols = 10;

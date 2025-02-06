@@ -2,7 +2,11 @@
 
 SpriteRender::SpriteRender() : Render()
 {
+}
 
+sf::Sprite* SpriteRender::GetSprite()
+{
+    return &sprite;
 }
 
 void SpriteRender::Init(const std::string& texturePath) 

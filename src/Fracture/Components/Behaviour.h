@@ -7,6 +7,7 @@ class Collider;
 class Behaviour : public Component
 {
 public:
+
 	Behaviour();
 	virtual ~Behaviour() = default;
 

@@ -10,11 +10,10 @@ class GameManager
 	SceneManager* m_SceneManager;
 
 	int m_Score;
-	int m_NbBalls;
-	int m_Lifes;
-	int m_GameState;
 
 public:
+
+	int m_GameState;
 
 	enum GAMESTATE
 	{
