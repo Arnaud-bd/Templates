@@ -4,11 +4,10 @@
 
 class SpriteRender : public Render
 {
-public:
-
     sf::Sprite sprite;
     sf::Texture texture;
 
+public:
     SpriteRender();
 
     void Init(const std::string& texturePath);
