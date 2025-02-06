@@ -9,8 +9,6 @@ class SceneManager
 public:
 	SceneManager();
 
-	void LoadScene();
-
 	Scene* GetCurrentScene();
 	int GetCurrentSceneState();
 	void SetCurrentSceneState(int i);

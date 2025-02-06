@@ -43,7 +43,6 @@ int GameManager::Loop()
     m_GameState = GAMESTATE::START;
 
     m_SceneManager->SetCurrentScene(m_GameState);
-    m_SceneManager->LoadScene();
 
 	sf::Clock clock;
 
@@ -58,7 +57,6 @@ int GameManager::Loop()
         {
             m_SceneManager->SetCurrentSceneState(m_GameState);
             m_SceneManager->SetCurrentScene(m_GameState);
-            m_SceneManager->LoadScene();
         }
 
         sf::Event event;

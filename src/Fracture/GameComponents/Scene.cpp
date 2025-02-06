@@ -38,6 +38,14 @@ void Scene::RemoveComponent(Component* _component)
 	}
 }
 
+void Scene::RemoveAllComponent()
+{
+	for (int i = 0; i < m_ComponentsList.size(); i++)
+	{
+		delete(m_ComponentsList[i]);
+	}
+}
+
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation)
 {
 	Transform2D* transform = new Transform2D();

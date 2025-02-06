@@ -20,6 +20,7 @@ public:
 	virtual void Init() = 0;
 	void AddComponent(Component* _component);
 	void RemoveComponent(Component* _component);
+	void RemoveAllComponent();
 	Transform2D* CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation);
 	void Destroy();
 	void Update(float _deltaTime);

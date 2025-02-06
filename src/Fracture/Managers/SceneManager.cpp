@@ -11,16 +11,7 @@ SceneManager::SceneManager()
 		AddScene(s);
 		m_ScenesList[i] = s;
 	}
-}
-
-void SceneManager::LoadScene()
-{
-	m_ScenesList[m_CurrentScene]->Init();
-	std::vector<Component*> vect = m_ScenesList[m_CurrentScene]->GetAll<Component>();
-	for (int i = 0; i < vect.size(); i++)
-	{
-		vect[i]->Start();
-	}
+	m_CurrentScene = 0;
 }
 
 Scene* SceneManager::GetCurrentScene()
@@ -40,7 +31,15 @@ void SceneManager::SetCurrentSceneState(int i)
 
 Scene* SceneManager::SetCurrentScene(int i)
 {
-	return m_ScenesList[m_CurrentScene] = m_ScenesList.find(i)->second;
+	m_ScenesList[m_CurrentScene]->RemoveAllComponent();
+	m_ScenesList[m_CurrentScene] = m_ScenesList.find(i)->second; 
+	m_ScenesList[m_CurrentScene]->Init();
+	std::vector<Component*> vect = m_ScenesList[m_CurrentScene]->GetAll<Component>();
+	for (int i = 0; i < vect.size(); i++)
+	{
+		vect[i]->Start();
+	}
+	return m_ScenesList[m_CurrentScene];
 }
 
 void SceneManager::AddScene(Scene* _Scene)
