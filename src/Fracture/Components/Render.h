@@ -6,7 +6,7 @@ class Render :  public Component, public sf::Drawable
 {
 public:
     sf::Drawable* todraw;
-    sf::Transform* transform;
+    Transform2D* transform;
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 

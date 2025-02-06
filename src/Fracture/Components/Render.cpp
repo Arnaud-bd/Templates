@@ -3,15 +3,16 @@
 
 void Render::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 {
-	if (Get<Transform2D>())
+	if (transform)
 	{
-		states.transform.combine(Get<Transform2D>()->getTransform());
+		states.transform.combine(transform->getTransform());
 	}
 	target.draw(*todraw, states);
 }
 
 void Render::Start()
 {
+	transform = Get<Transform2D>();
 }
 
 void Render::Awake()
