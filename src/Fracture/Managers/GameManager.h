@@ -10,7 +10,6 @@ class GameManager
 	SceneManager* m_SceneManager;
 
 	int m_Score;
-	int m_GameState;
 
 public:
 

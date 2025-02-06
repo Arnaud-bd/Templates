@@ -5,11 +5,11 @@
 class Render :  public Component, public sf::Drawable
 {
 protected:
-
     sf::Drawable* todraw;
-    Transform2D* mTransform;
 
 public:
+
+    Transform2D* mTransform;
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
