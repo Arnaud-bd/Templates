@@ -12,6 +12,7 @@ class Component
 
 public:
 	Component();
+	virtual ~Component() = default;
 
 	template <typename _type>
 	_type* Add();

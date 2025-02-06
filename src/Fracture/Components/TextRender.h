@@ -8,8 +8,8 @@ class TextRender : public Render
 {
 public:
 
-    sf::Font* m_font;
-    sf::Text* m_text;
+    sf::Font m_font;
+    sf::Text m_text;
 
     TextRender();
 

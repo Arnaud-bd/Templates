@@ -20,6 +20,7 @@ void ScoreBehaviour::Start()
 {
 }
 
-void ScoreBehaviour::OnCollide()
+void ScoreBehaviour::OnCollideEnter(Collider* _other)
 {
 }
+

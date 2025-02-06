@@ -44,6 +44,8 @@ void Scene::RemoveAllComponent()
 	{
 		delete(m_ComponentsList[i]);
 	}
+	m_ComponentsList.clear();
+	m_CurrentID = 0;
 }
 
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation)
@@ -88,7 +90,7 @@ void Scene::Physic()
 	{
 		for (int j = i + 1; j < colliders.size(); ++j) 
 		{
-			if (colliders[i] != colliders[j] && colliders[i]->IsCollide(*colliders[j]))
+			if (colliders[i] != colliders[j] && colliders[i]->IsCollide(colliders[j]))
 			{
 				std::pair<Collider*, Collider*> c (colliders[i], colliders[j]);
 

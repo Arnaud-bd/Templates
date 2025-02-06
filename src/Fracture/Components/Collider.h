@@ -11,14 +11,15 @@ class Collider : public Behaviour
 
 public:
 	Collider();
+	virtual ~Collider();
 
 	void AddHitbox(sf::Vector2f _position, float radius);
 
-	bool IsCollide(Collider _other);
+	bool IsCollide(Collider* _other);
 	void OnCollideEnter(Collider* _other);
-	bool OnTriggerEnter(Collider _other);
-	bool OnTriggerExit(Collider _other);
-	bool OnTriggerStay(Collider _other);
+	bool OnTriggerEnter(Collider* _other);
+	bool OnTriggerExit(Collider* _other);
+	bool OnTriggerStay(Collider* _other);
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

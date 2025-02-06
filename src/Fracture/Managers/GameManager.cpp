@@ -45,6 +45,7 @@ int GameManager::Loop()
     m_SceneManager->SetCurrentScene(m_GameState);
 
 	sf::Clock clock;
+    bool isPress = false;
 
     while (m_Window.isOpen())
     {
@@ -66,8 +67,9 @@ int GameManager::Loop()
                 m_Window.close();
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        if (isPress == false && sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         {
+            isPress = true;
             if (m_GameState < 2)
             {
                 m_GameState = m_GameState + 1;
@@ -76,6 +78,9 @@ int GameManager::Loop()
             {
                 m_GameState = 0;
             }
+        }
+        else if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+            isPress = false;
         }
 
         m_SceneManager->GetCurrentScene()->Update(deltaTime);
