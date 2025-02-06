@@ -1,13 +1,20 @@
 #pragma once
 #include "../GameComponents/Scene.hpp"
+
 class SceneManager
 {
-	std::vector<Scene*> m_ScenesList;
-	Scene* m_CurrentScene;
+	int m_CurrentScene;
+	std::map<int, Scene*> m_ScenesList;
 
 public:
+	SceneManager();
+
+	void LoadScene();
 
 	Scene* GetCurrentScene();
-	void SetCurrentScene(Scene* CurrentScene);
+	int GetCurrentSceneState();
+	void SetCurrentSceneState(int i);
+	Scene* SetCurrentScene(int i);
+	void AddScene(Scene* _Scene);
 };
 

@@ -7,7 +7,6 @@ ScoreBehaviour::ScoreBehaviour()
 
 void ScoreBehaviour::Update(float _deltaTime)
 {
-    //Transform2D* Transform = Get<Transform2D>(); 
     t->ChangeText(std::to_string(GameManager::GetInstance()->GetScore()));
 }
 

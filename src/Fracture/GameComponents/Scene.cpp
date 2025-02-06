@@ -21,43 +21,6 @@ Scene::~Scene()
 	}
 }
 
-void Scene::Init()
-{
-
-	Transform2D* backGround = CreateEntity({ 500, 594 }, {1,1}, 0);
-	BackGroundBehaviour* backGroundBehaviour = backGround->Add<BackGroundBehaviour>();
-
-	Transform2D* gameobject = CreateEntity({ 100, 800 }, { 1,1 }, 0);
-	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>(); // Création du joueurs
-
-	Transform2D* ball = CreateEntity({ 500, 500 }, { 1,1 }, 0);
-	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
-
-	Transform2D* UIScore = CreateEntity({ 100, 100 }, { 1,1 }, 0);
-	ScoreBehaviour* scoreBehaviour = UIScore->Add<ScoreBehaviour>(); 
-
-	const int rows = 10;				// Nombre de rang�es de briques
-	const int cols = 10;				// Nombre de briques par rang�e
-	const float brickWidth = 50.0f;		// Largeur de la brique
-	const float brickHeight = 20.0f;	// Hauteur de la brique
-	const float gap = 20.0f;			// Espace entre les briques
-
-	const float startX = 200.0f;
-	const float startY = 500.0f;
-
-	for (int row = 0; row < rows; ++row)
-	{
-		float y = startY - row * (brickHeight + gap);
-
-		for (int col = 0; col < cols; ++col)
-		{
-			float x = startX + col * (brickWidth + gap);
-			Transform2D* gameobject = CreateEntity({ x, y }, {1, 1}, 0);
-			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
-		}
-	}
-}
-
 void Scene::AddComponent(Component* _component)
 {
 	m_ComponentsList.push_back(_component);
