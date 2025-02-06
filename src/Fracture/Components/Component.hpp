@@ -35,6 +35,7 @@ inline _type* Component::Add()
 	component->m_ID = m_ID;
 	GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->AddComponent(component);
 	component->Awake();
+	component->Start();
 	return component;
 }
 

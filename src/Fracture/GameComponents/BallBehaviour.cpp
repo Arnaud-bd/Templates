@@ -10,36 +10,35 @@ BallBehaviour::BallBehaviour()
 
 void BallBehaviour::Update(float _deltaTime)
 {
-    Transform2D* Transform = Get<Transform2D>();
-    m_PreviousPosition = Transform->getPosition();
+    m_PreviousPosition = m_transform->getPosition();
     sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
-    float x = Transform->getPosition().x + m_Direction.x * 500.f * _deltaTime;
-    float y = Transform->getPosition().y + m_Direction.y * 500.f * _deltaTime;
+    float x = m_transform->getPosition().x + m_Direction.x * 500.f * _deltaTime;
+    float y = m_transform->getPosition().y + m_Direction.y * 500.f * _deltaTime;
 
-    Transform->setPosition(x, y);
+    m_transform->setPosition(x, y);
 
-    if (Transform->getPosition().x <= 0.f)
+    if (m_transform->getPosition().x <= 0.f)
     {
-        Transform->setPosition(0.f, Transform->getPosition().y);
+        m_transform->setPosition(0.f, m_transform->getPosition().y);
         m_Direction.x = -m_Direction.x;
     }
 
-    if (Transform->getPosition().x >= window->getSize().x)
+    if (m_transform->getPosition().x >= window->getSize().x)
     {
-        Transform->setPosition(window->getSize().x, Transform->getPosition().y);
+        m_transform->setPosition(window->getSize().x, m_transform->getPosition().y);
         m_Direction.x = -m_Direction.x;
     }
 
-    if (Transform->getPosition().y <= 0.f)
+    if (m_transform->getPosition().y <= 0.f)
     {
-        Transform->setPosition(Transform->getPosition().x, 0.f);
+        m_transform->setPosition(m_transform->getPosition().x, 0.f);
         m_Direction.y = -m_Direction.y;
     }
 
-    if (Transform->getPosition().y >= window->getSize().y)
+    if (m_transform->getPosition().y >= window->getSize().y)
     {
-        Transform->setPosition(Transform->getPosition().x, window->getSize().y);
+        m_transform->setPosition(m_transform->getPosition().x, window->getSize().y);
         m_Direction.y = -m_Direction.y;
     }
 }
@@ -49,20 +48,22 @@ void BallBehaviour::Awake()
     SpriteRender* s = Add<SpriteRender>();
     s->Init("..\\..\\..\\res\\Sprite\\ballBlue.png");
     s->Awake();
+    s->Start();
     Collider* c = Add<Collider>();
-    c->AddHitbox({0,0}, 11);
-    c->Awake();
+    c->Start();
+    c->AddHitbox({ 0,0 }, 11);
 }
 
 void BallBehaviour::Start()
 {
     m_Direction.x =  1.f;
     m_Direction.y = -1.f;
+    m_transform = Get<Transform2D>();
 }
 
-void BallBehaviour::OnCollide()
+void BallBehaviour::OnCollideEnter(Collider* _other)
 {
-    sf::Vector2f currentPosition = Get<Transform2D>()->getPosition();
+    sf::Vector2f currentPosition = m_transform->getPosition();
     sf::Vector2f delta = currentPosition - m_PreviousPosition;
 
     if (std::abs(delta.x) > std::abs(delta.y))

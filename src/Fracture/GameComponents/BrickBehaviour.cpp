@@ -19,22 +19,22 @@ BrickBehaviour::~BrickBehaviour()
 void BrickBehaviour::Awake()
 {
     Collider* c = Add<Collider>();
-
+    c->Start();
     c->AddHitbox({ -16,0 }, 14);
     c->AddHitbox({ 0,0 }, 14);
     c->AddHitbox({ 16,0 }, 14);
-    c->Awake();
+    
 
     SpriteRender* s = Add<SpriteRender>();
     s->Init("..\\..\\..\\res\\Sprite\\element_red_rectangle.png");
-    s->Awake();
+    s->Start();
 }
 
 void BrickBehaviour::Start()
 {
 }
 
-void BrickBehaviour::OnCollide()
+void BrickBehaviour::OnCollideEnter(Collider* _other)
 {
     std::vector<Component*> sameID = GetAll<Component>();
     for (int i = 0; i < sameID.size(); ++i)

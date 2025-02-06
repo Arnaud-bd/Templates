@@ -9,16 +9,15 @@ PlayerBehaviour::PlayerBehaviour()
 
 void PlayerBehaviour::Update(float _deltaTime)
 {
-    Transform2D* Transform = Get<Transform2D>();
     sf::RenderWindow* window = GameManager::GetInstance()->GetWindow();
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && Transform->getPosition().x < window->getSize().x)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_transform->getPosition().x < window->getSize().x)
     {
-        Transform->setPosition(Transform->getPosition().x + 500 * 1 * _deltaTime, Transform->getPosition().y);
+        m_transform->setPosition(m_transform->getPosition().x + 500 * 1 * _deltaTime, m_transform->getPosition().y);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && Transform->getPosition().x > 0.f)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_transform->getPosition().x > 0.f)
     {
-        Transform->setPosition(Transform->getPosition().x + 500 * -1 * _deltaTime, Transform->getPosition().y);
+        m_transform->setPosition(m_transform->getPosition().x + 500 * -1 * _deltaTime, m_transform->getPosition().y);
     }
 }
 
@@ -26,19 +25,19 @@ void PlayerBehaviour::Awake()
 {
     SpriteRender* s = Add<SpriteRender>();
     s->Init("..\\..\\..\\res\\Sprite\\paddleBlu.png");
-    s->Awake();
+    s->Start();
     Collider* c = Add<Collider>();
-
+    c->Start();
     c->AddHitbox({   0,0 }, 30);
 
-    c->Awake();
 }
 
 void PlayerBehaviour::Start()
 {
+    m_transform = Get<Transform2D>();
 }
 
-void PlayerBehaviour::OnCollide()
+void PlayerBehaviour::OnCollideEnter(Collider* _other)
 {
 
 }

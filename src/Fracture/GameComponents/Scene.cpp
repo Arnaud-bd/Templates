@@ -110,10 +110,17 @@ void Scene::Physic()
 	{
 		for (int j = i + 1; j < colliders.size(); ++j) 
 		{
-			if (colliders[i]->IsCollide(*colliders[j]) && colliders[i] != colliders[j])
+			if (colliders[i] != colliders[j] && colliders[i]->IsCollide(*colliders[j]))
 			{
-				colliders[i]->Get<Behaviour>()->OnCollide();
-				colliders[j]->Get<Behaviour>()->OnCollide();
+				std::pair<Collider*, Collider*> c (colliders[i], colliders[j]);
+
+				if (std::find(m_lastColliders.begin(), m_lastColliders.end(), c) != m_lastColliders.end())
+				{
+					continue;
+				}
+
+				colliders[i]->Get<Behaviour>()->OnCollideEnter(colliders[j]);
+				colliders[j]->Get<Behaviour>()->OnCollideEnter(colliders[i]);
 			}
 		}
 	}

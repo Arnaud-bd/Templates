@@ -7,6 +7,7 @@ class Collider : public Behaviour
 {
 	std::vector<sf::CircleShape*> m_Hitboxs;
 	std::vector<sf::Vector2f> m_HitboxsRelative;
+	Transform2D* m_transform;
 	bool m_IsTrigger;
 
 public:
@@ -15,7 +16,7 @@ public:
 	void AddHitbox(sf::Vector2f _position, float radius);
 
 	bool IsCollide(Collider _other);
-	void OnCollide();
+	void OnCollideEnter(Collider* _other);
 	bool OnTriggerEnter(Collider _other);
 	bool OnTriggerExit(Collider _other);
 	bool OnTriggerStay(Collider _other);

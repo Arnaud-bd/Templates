@@ -12,9 +12,7 @@ void Collider::AddHitbox(sf::Vector2f _position, float _radius)
     c->setRadius(_radius);
     c->setOrigin(c->getOrigin().x + _radius, c->getOrigin().y + _radius);
 
-    Transform2D* transform = Get<Transform2D>();
-
-    c->setPosition(transform->getPosition().x + _position.x, transform->getPosition().y + _position.y);
+    c->setPosition(m_transform->getPosition().x + _position.x, m_transform->getPosition().y + _position.y);
 
     m_Hitboxs.push_back(c);
     m_HitboxsRelative.push_back(_position);
@@ -37,7 +35,7 @@ bool Collider::IsCollide(Collider _other)
     return false;
 }
 
-void Collider::OnCollide()
+void Collider::OnCollideEnter(Collider* _other)
 {
 
 }
@@ -59,11 +57,9 @@ bool Collider::OnTriggerStay(Collider _other)
 
 void Collider::Update(float _deltaTime)
 {
-    Transform2D* transforms = Get<Transform2D>();
-
     for (int j = 0; j < m_Hitboxs.size(); ++j)
     {
-        m_Hitboxs[j]->setPosition(transforms->getPosition() + m_HitboxsRelative[j]);
+        m_Hitboxs[j]->setPosition(m_transform->getPosition() + m_HitboxsRelative[j]);
     }
 }
 
@@ -73,4 +69,5 @@ void Collider::Awake()
 
 void Collider::Start()
 {
+    m_transform = Get<Transform2D>();
 }

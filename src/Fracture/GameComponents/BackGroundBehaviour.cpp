@@ -65,6 +65,7 @@ void BackGroundBehaviour::Start()
 {
 }
 
-void BackGroundBehaviour::OnCollide()
+void BackGroundBehaviour::OnCollideEnter(Collider* _other)
 {
+
 }

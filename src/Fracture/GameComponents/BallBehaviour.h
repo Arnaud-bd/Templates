@@ -6,6 +6,7 @@ class BallBehaviour : public Behaviour
 {
 	sf::Vector2f m_Direction;
 	sf::Vector2f m_PreviousPosition;
+	Transform2D* m_transform;
 
 public:
 	BallBehaviour();
@@ -13,5 +14,5 @@ public:
 	void Update(float _deltaTime) override;
 	void Awake() override;
 	void Start() override;
-	void OnCollide() override;
+	void OnCollideEnter(Collider* _other) override;
 };
