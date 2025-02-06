@@ -74,10 +74,12 @@ void Scene::RemoveComponent(Component* _component)
 Transform2D* Scene::CreateEntity(sf::Vector2f _position, sf::Vector2f _scale, float _rotation)
 {
 	Transform2D* transform = new Transform2D();
-	transform->Init(_position, _scale, _rotation, m_ComponentsList.size()+1);
+	transform->Init(_position, _scale, _rotation, m_CurrentID);
 
 	transform->Awake();
 	m_ComponentsList.push_back(transform);
+
+	m_CurrentID++;
 
 	return transform;
 }
@@ -105,6 +107,7 @@ void Scene::Update(float _deltaTime)
 
 void Scene::Physic()
 {
+	std::vector<std::pair<Component*, Component*>> newColliders;
 	std::vector<Collider*> colliders = this->GetAll<Collider>();
 	for (int i = 0; i < colliders.size(); ++i)
 	{
@@ -114,16 +117,18 @@ void Scene::Physic()
 			{
 				std::pair<Collider*, Collider*> c (colliders[i], colliders[j]);
 
-				if (std::find(m_lastColliders.begin(), m_lastColliders.end(), c) != m_lastColliders.end())
+				if (!(std::find(m_lastColliders.begin(), m_lastColliders.end(), c) != m_lastColliders.end()))
 				{
-					continue;
+					colliders[i]->Get<Behaviour>()->OnCollideEnter(colliders[j]);
+					colliders[j]->Get<Behaviour>()->OnCollideEnter(colliders[i]);
 				}
 
-				colliders[i]->Get<Behaviour>()->OnCollideEnter(colliders[j]);
-				colliders[j]->Get<Behaviour>()->OnCollideEnter(colliders[i]);
+				newColliders.push_back(c);
 			}
 		}
 	}
+
+	m_lastColliders = newColliders;
 
 	Destroy();
 }

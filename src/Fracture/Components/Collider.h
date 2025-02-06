@@ -1,7 +1,6 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "../Components/Behaviour.h"
-#include "../Components/Component.hpp"
 
 class Collider : public Behaviour 
 {

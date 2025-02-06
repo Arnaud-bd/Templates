@@ -1,6 +1,8 @@
 #pragma once
 #include "Component.hpp"
-#include "../Components/Collider.h"
+#include "../Components/Component.hpp"
+
+class Collider;
 
 class Behaviour : public Component
 {

@@ -9,7 +9,8 @@ class Scene
 {
 	std::vector<Component*> m_ComponentsList;
 	std::vector<Component*> m_destroyer;
-	std::vector<std::pair<Component*, Component*>*> m_lastColliders;
+	std::vector<std::pair<Component*, Component*>> m_lastColliders;
+	int m_CurrentID = 0;
 
 public:
 	Scene();
