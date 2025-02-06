@@ -39,7 +39,7 @@ void ButtonBehaviour::Update(float _deltaTime)
 void ButtonBehaviour::Awake()
 {
     m_sprite = Add<SpriteRender>(); 
-    m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_depth_flat.png");   
+    m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_flat.png");   
     m_sprite->Awake();   
     m_sprite->Start();   
 

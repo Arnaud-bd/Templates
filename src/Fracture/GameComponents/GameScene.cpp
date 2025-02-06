@@ -81,12 +81,12 @@ void GameScene::Init()
 	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); 
 
 	const int rows = 10;
-	const int cols = 10;
+	const int cols = 20;
 	const float brickWidth = 50.0f;
 	const float brickHeight = 20.0f;
 	const float gap = 20.0f;
 
-	const float startX = 200.0f;
+	const float startX = 250.0f;
 	const float startY = 500.0f;
 
 	for (int row = 0; row < rows; ++row)
