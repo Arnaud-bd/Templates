@@ -15,25 +15,6 @@ StartGameBehaviour::~StartGameBehaviour()
 
 void StartGameBehaviour::Update(float _deltaTime)
 {
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-    {
-        GameManager* inst = GameManager::GetInstance();
-        sf::Vector2i globalPosition = sf::Mouse::getPosition();
-        sf::Vector2f mousePos = static_cast<sf::Vector2f>(globalPosition);
-
-        if (m_sprite->mTransform)
-        {
-            sf::Vector2f position = m_sprite->mTransform->getPosition();
-            sf::Vector2u size = m_sprite->GetSprite()->getTexture()->getSize();
-
-            sf::FloatRect bounds(position.x, position.y, size.x * 1.5, size.y * 1.5);
-
-            if (bounds.contains(mousePos))
-            {
-                inst->m_GameState = inst->GameManager::GAMESTATE::LEVEL1;
-            }
-        }
-    }
 }
 
 void StartGameBehaviour::Awake()

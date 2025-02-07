@@ -13,7 +13,7 @@
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"
 #include "../GameComponents/ScoreBehaviour.h"
-#include "../GameComponents/ButtonBehaviour.h"
+#include "../GameComponents/StartGameBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 #include "../Components/Collider.h"
@@ -80,17 +80,17 @@ void MenuScene::Init()
 	Transform2D* tree3Transform = CreateEntity({ 15, 1085 }, { 1.5f , 1.5f }, 0);
 	TreeBehaviour* tree3Behaviour = tree3Transform->Add<TreeBehaviour>();
 
-	Transform2D* UIButton = CreateEntity({ 960, 400 }, { 1,1 }, 0); 
-	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); 
+	Transform2D* startGameButton = CreateEntity({ 960, 400 }, { 1,1 }, 0); 
+	StartGameBehaviour* buttonBehaviour = startGameButton->Add<StartGameBehaviour>();
 	buttonBehaviour->m_text->ChangeText("P l a y");
 
-	Transform2D* UIButton2 = CreateEntity({ 960, 600 }, { 1,1 }, 0);
+	/*Transform2D* UIButton2 = CreateEntity({ 960, 600 }, { 1,1 }, 0);
 	ButtonBehaviour* buttonBehaviour2 = UIButton2->Add<ButtonBehaviour>();
 	buttonBehaviour2->m_text->ChangeText("F F");
 
 	Transform2D* UIButton3 = CreateEntity({ 960, 800 }, { 1,1 }, 0);
 	ButtonBehaviour* buttonBehaviour3 = UIButton3->Add<ButtonBehaviour>();
-	buttonBehaviour3->m_text->ChangeText("S K I L L   I S S U E");
+	buttonBehaviour3->m_text->ChangeText("S K I L L   I S S U E");*/
 
 	Transform2D* titre = CreateEntity({ 950, 100 }, { 1.5f , 1.5f }, 0);
 	SpriteRender* Titre = titre->Add<SpriteRender>();
