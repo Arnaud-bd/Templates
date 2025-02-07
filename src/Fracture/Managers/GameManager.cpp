@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "SFML/Audio.hpp"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
 #include "../GameComponents/BrickBehaviour.h"
@@ -40,13 +41,19 @@ int GameManager::Loop()
     m_Window.create(sf::VideoMode(), "Fracture", sf::Style::Fullscreen);
     m_Window.setPosition(sf::Vector2i(366, 0));
 
+    sf::Music music;
+    if (!music.openFromFile("../../../res/PawsontheBeat.mp3"))
+    {
+    }
+    music.play();
+    music.setLoop(true); 
+    music.setVolume(25);
+        
     m_SceneManager = new SceneManager();
     m_GameState = GAMESTATE::START;
-
     m_SceneManager->SetCurrentScene(m_GameState);
 
 	sf::Clock clock;
-    bool isPress = false;
 
     while (m_Window.isOpen())
     {
