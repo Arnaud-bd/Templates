@@ -20,9 +20,9 @@ void BrickBehaviour::Awake()
 {
     Collider* c = Add<Collider>();
     c->Start();
-    c->AddHitbox({ -16,0 }, 14);
-    c->AddHitbox({ 0,0 }, 14);
-    c->AddHitbox({ 16,0 }, 14);
+    c->AddHitbox({ -24,0 }, 22);
+    c->AddHitbox({ 0,0 }, 22);
+    c->AddHitbox({ 24,0 }, 22);
     
 
     SpriteRender* s = Add<SpriteRender>();

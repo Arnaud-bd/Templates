@@ -31,10 +31,10 @@ void GameScene::Init()
 	Transform2D* cL2Transform2 = CreateEntity({ 1536, 500 }, { 1 , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer2Behaviour2 = cL2Transform2->Add<CloudLayer1Behaviour>();
 
-	Transform2D* cloud1Transform = CreateEntity({ 200, 150 }, { 1,1 }, 0);
+	Transform2D* cloud1Transform = CreateEntity({ 200, 150 }, { 0.6f , 0.6f }, 0);
 	CloudBehaviour* cloud1Behaviour = cloud1Transform->Add<CloudBehaviour>();
 
-	Transform2D* cloud2Transform = CreateEntity({ 1720, 150 }, { 1,1 }, 0);
+	Transform2D* cloud2Transform = CreateEntity({ 1620, 150 }, { 0.6f , 0.6f }, 0);
 	CloudBehaviour* cloud2Behaviour = cloud2Transform->Add<CloudBehaviour>();
 
 	Transform2D* gLTransform = CreateEntity({ 512, 650 }, { 1 , 1 }, 0);
@@ -85,13 +85,13 @@ void GameScene::Init()
 	/*Transform2D* UIButton = CreateEntity({ 500, 500 }, { 1,1 }, 0);
 	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); */
 
-	const int rows = 10;
-	const int cols = 20;
-	const float brickWidth = 50.0f;
-	const float brickHeight = 20.0f;
-	const float gap = 20.0f;
+	const int rows = 8;
+	const int cols = 15;
+	const float brickWidth = 90.0f;
+	const float brickHeight = 40.0f;
+	const float gap = 15.0f;
 
-	const float startX = 300.0f;
+	const float startX = 225.0f;
 	const float startY = 500.0f;
 
 	for (int row = 0; row < rows; ++row)
@@ -101,7 +101,7 @@ void GameScene::Init()
 		for (int col = 0; col < cols; ++col)
 		{
 			float x = startX + col * (brickWidth + gap);
-			Transform2D* gameobject = CreateEntity({ x, y }, { 1, 1 }, 0);
+			Transform2D* gameobject = CreateEntity({ x, y }, { 1.5f , 1.5f }, 0);
 			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
 		}
 	}
