@@ -9,9 +9,9 @@ class ButtonBehaviour : public Behaviour
 {
 	Transform2D* m_transform;
 	SpriteRender* m_sprite;
-	TextRender* m_text;
 
 public:
+	TextRender* m_text;
 
 	ButtonBehaviour();
 	~ButtonBehaviour();
