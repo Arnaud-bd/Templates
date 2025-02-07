@@ -5,6 +5,7 @@ class BushBehaviour : public Behaviour
 {
 	Transform2D* m_Transform;
 	int m_ScaleSens = 1;
+	float m_OriginalXScale;
 
 public:
 	BushBehaviour();

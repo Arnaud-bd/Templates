@@ -9,11 +9,11 @@ BushBehaviour::BushBehaviour()
 
 void BushBehaviour::Update(float _deltaTime)
 {
-    if (m_Transform->getScale().x >= 1.2f)
+    if (m_Transform->getScale().x >= m_OriginalXScale + 0.2f)
     {
         m_ScaleSens = -1.f;
     }
-    else if (m_Transform->getScale().x <= 1.0f)
+    else if (m_Transform->getScale().x <= m_OriginalXScale)
     {
         m_ScaleSens = 1.f;
     }
@@ -31,6 +31,7 @@ void BushBehaviour::Awake()
 void BushBehaviour::Start()
 {
     m_Transform = Get<Transform2D>();
+    m_OriginalXScale = m_Transform->getScale().x;
 }
 
 void BushBehaviour::OnCollideEnter(Collider* _other)

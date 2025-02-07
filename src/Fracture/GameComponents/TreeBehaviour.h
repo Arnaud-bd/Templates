@@ -5,6 +5,7 @@ class TreeBehaviour : public Behaviour
 {
 	Transform2D* m_Transform;
 	int m_RotationSens = 1;
+	float m_OriginalRotation;
 
 public:
 	TreeBehaviour();

@@ -18,27 +18,27 @@ void BallBehaviour::Update(float _deltaTime)
 
     m_transform->setPosition(x, y);
 
-    if (m_transform->getPosition().x <= 11.f)
+    if (m_transform->getPosition().x <= 16.5f)
     {
-        m_transform->setPosition(11.f, m_transform->getPosition().y);
+        m_transform->setPosition(16.5f, m_transform->getPosition().y);
         m_Direction.x = -m_Direction.x;
     }
 
-    if (m_transform->getPosition().x >= window->getSize().x - 11.f)
+    if (m_transform->getPosition().x >= window->getSize().x - 16.5f)
     {
-        m_transform->setPosition(window->getSize().x - 11.f, m_transform->getPosition().y);
+        m_transform->setPosition(window->getSize().x - 16.5f, m_transform->getPosition().y);
         m_Direction.x = -m_Direction.x;
     }
 
-    if (m_transform->getPosition().y <= 11.f)
+    if (m_transform->getPosition().y <= 16.5f)
     {
-        m_transform->setPosition(m_transform->getPosition().x, 11.f);
+        m_transform->setPosition(m_transform->getPosition().x, 16.5f);
         m_Direction.y = -m_Direction.y;
     }
 
-    if (m_transform->getPosition().y >= window->getSize().y - 11.f)
+    if (m_transform->getPosition().y >= window->getSize().y - 16.5f)
     {
-        m_transform->setPosition(m_transform->getPosition().x, window->getSize().y - 11.f);
+        m_transform->setPosition(m_transform->getPosition().x, window->getSize().y - 16.5f);
         m_Direction.y = -m_Direction.y;
     }
 }
@@ -52,7 +52,7 @@ void BallBehaviour::Awake()
     s->Start();
     Collider* c = Add<Collider>();
     c->Start();
-    c->AddHitbox({ 0,0 }, 11);
+    c->AddHitbox({ 0,0 }, 16.5f);
 }
 
 void BallBehaviour::Start()
