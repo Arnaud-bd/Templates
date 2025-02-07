@@ -24,7 +24,6 @@ void PlayerBehaviour::Update(float _deltaTime)
     {
         GameManager::GetInstance()->m_GameState = GameManager::GAMESTATE::WIN;
     }
-
 }
 
 void PlayerBehaviour::Awake()
@@ -34,10 +33,10 @@ void PlayerBehaviour::Awake()
     s->Start();
     Collider* c = Add<Collider>();
     c->Start();
-    c->AddHitbox({-58.5f, 0}, 18.5f);
-    c->AddHitbox({-19.5f, 0}, 18.5f);
-    c->AddHitbox({ 19.5f, 0}, 18.5f);
-    c->AddHitbox({ 58.5f, 0}, 18.5f);
+    c->AddHitbox({-58.5f, 0}, 19.f);
+    c->AddHitbox({-19.5f, 0}, 19.f);
+    c->AddHitbox({ 19.5f, 0}, 19.f);
+    c->AddHitbox({ 58.5f, 0}, 19.f);
 }
 
 void PlayerBehaviour::Start()

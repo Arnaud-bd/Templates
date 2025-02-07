@@ -86,7 +86,6 @@ void Scene::Physic()
 					colliders[i]->Get<Behaviour>()->OnCollideEnter(colliders[j]);
 					colliders[j]->Get<Behaviour>()->OnCollideEnter(colliders[i]);
 				}
-
 				newColliders.push_back(c);
 			}
 		}

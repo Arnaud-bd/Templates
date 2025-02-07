@@ -37,6 +37,11 @@ sf::RenderWindow* GameManager::GetWindow()
     return &m_Window;
 }
 
+int GameManager::GetLife()
+{
+    return m_Lifes;
+}
+
 void GameManager::LooseALife()
 {
     m_Lifes--;

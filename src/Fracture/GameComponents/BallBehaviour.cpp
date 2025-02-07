@@ -67,16 +67,12 @@ void BallBehaviour::OnCollideEnter(Collider* _other)
     sf::Vector2f currentPosition = m_transform->getPosition();
     sf::Vector2f delta = currentPosition - m_PreviousPosition;
 
-    if (std::abs(delta.x) > std::abs(delta.y))
-    {
-        m_Direction.x = -m_Direction.x;
-        return;
-    }
-    else
-    {
-        m_Direction.y = -m_Direction.y;
-        return;
-    }
+    sf::Vector2f normal = _other->GetCollisionNormal(currentPosition);
+
+    float dot = m_Direction.x * normal.x + m_Direction.y * normal.y;
+    m_Direction.x -= 2 * dot * normal.x;
+    m_Direction.y -= 2 * dot * normal.y;
+    
 }
 
 void BallBehaviour::Reset()

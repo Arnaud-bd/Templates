@@ -1,6 +1,7 @@
 #include "CloudBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
+#include "../Components/Transform2D.h"
 
 CloudBehaviour::CloudBehaviour()
 {
@@ -8,7 +9,6 @@ CloudBehaviour::CloudBehaviour()
 
 void CloudBehaviour::Update(float _deltaTime)
 {
-    m_Transform->move(-0.5f * _deltaTime);
 }
 
 void CloudBehaviour::Awake()

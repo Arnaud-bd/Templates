@@ -21,5 +21,7 @@ public:
 	void Update(float _deltaTime) override;
 	void Awake() override;
 	void Start() override;
+
+	sf::Vector2f GetCollisionNormal(const sf::Vector2f& impactPoint) const;
 };
 

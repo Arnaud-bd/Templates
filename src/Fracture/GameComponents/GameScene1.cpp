@@ -7,6 +7,7 @@
 #include "../GameComponents/CloudLayer1Behaviour.h"
 #include "../GameComponents/CloudLayer2Behaviour.h"
 #include "../GameComponents/HillsBehaviour.h"
+#include "../GameComponents/LifeBehaviour.h"
 #include "../GameComponents/Groundlayer1Behaviour.h"
 #include "../GameComponents/Groundlayer2Behaviour.h"
 #include "../GameComponents/PlayerBehaviour.h"
@@ -83,11 +84,11 @@ void GameScene1::Init()
 	Transform2D* ball = CreateEntity({ 860.f, 920.f }, { 1.5f , 1.5f }, 0.f);
 	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
 
-	Transform2D* UIScore = CreateEntity({ 100.f, 100.f }, { 1.f,1.f }, 0.f);
+	Transform2D* UIScore = CreateEntity({ 50.f, 50.f }, { 1.f,1.f }, 0.f);
 	ScoreBehaviour* scoreBehaviour = UIScore->Add<ScoreBehaviour>();
 
-	/*Transform2D* UIButton = CreateEntity({ 500, 500 }, { 1,1 }, 0);
-	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); */
+	Transform2D* LifeScore = CreateEntity({ 50.f, 100.f }, { 1.f,1.f }, 0.f);
+	LifeBehaviour* lifeBehaviour = LifeScore->Add<LifeBehaviour>(); 
 
 	const int rows = 8;
 	const int cols = 15;

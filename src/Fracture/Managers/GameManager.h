@@ -28,6 +28,7 @@ public:
 	static GameManager* GetInstance();
 	SceneManager* GetSceneManager();
 	int Loop();
+	int GetLife();
 	void IncreaseScore(int _score);
 	int GetScore();
 	sf::RenderWindow* GetWindow();

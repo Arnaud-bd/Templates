@@ -66,3 +66,17 @@ void Collider::Start()
 {
     m_transform = Get<Transform2D>();
 }
+
+sf::Vector2f Collider::GetCollisionNormal(const sf::Vector2f& impactPoint) const
+{
+    sf::Vector2f center = m_transform->getPosition();
+    sf::Vector2f normal = impactPoint - center;
+
+    float length = std::sqrt(normal.x * normal.x + normal.y * normal.y);
+    if (length != 0)
+        normal /= length;
+    else
+        normal = sf::Vector2f(0, -1); // Valeur par défaut si problème
+
+    return normal;
+}
