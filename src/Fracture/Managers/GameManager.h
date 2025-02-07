@@ -10,7 +10,6 @@ class GameManager
 	SceneManager* m_SceneManager;
 
 	int m_Score;
-	int m_Lifes = 3;
 
 public:
 
@@ -23,16 +22,18 @@ public:
 		LEVEL2, 
 		WIN,
 		LOOSE,
+		CREDITS,
+		EXIT,
 	};
 
 	static GameManager* GetInstance();
 	SceneManager* GetSceneManager();
 	int Loop();
-	int GetLife();
 	void IncreaseScore(int _score);
 	int GetScore();
 	sf::RenderWindow* GetWindow();
-	void LooseALife();
+	void ResetSprites();
+	int GetPlayerLife();
 
 };
 

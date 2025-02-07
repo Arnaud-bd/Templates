@@ -37,14 +37,8 @@ sf::RenderWindow* GameManager::GetWindow()
     return &m_Window;
 }
 
-int GameManager::GetLife()
+void GameManager::ResetSprites()
 {
-    return m_Lifes;
-}
-
-void GameManager::LooseALife()
-{
-    m_Lifes--;
     std::vector<BallBehaviour*> balls = m_SceneManager->GetCurrentScene()->GetAll<BallBehaviour>();
     for (int i = 0; i < balls.size(); ++i)
     {
@@ -54,13 +48,23 @@ void GameManager::LooseALife()
     std::vector<PlayerBehaviour*> players = m_SceneManager->GetCurrentScene()->GetAll<PlayerBehaviour>();
     for (int i = 0; i < players.size(); ++i)
     {
+        players[i]->LooseLife();
         players[i]->Reset();
+    }
+}
+
+int GameManager::GetPlayerLife()
+{
+    std::vector<PlayerBehaviour*> players = m_SceneManager->GetCurrentScene()->GetAll<PlayerBehaviour>();
+    for (int i = 0; i < players.size(); ++i)
+    {
+        return players[i]->GetLife();
     }
 }
 
 int GameManager::Loop()
 {
-    m_Window.create(sf::VideoMode(1000,1000), "Fracture", sf::Style::Close);
+    m_Window.create(sf::VideoMode(), "Fracture", sf::Style::Fullscreen);
     m_Window.setPosition(sf::Vector2i(366, 0));
 
     sf::Music music;
@@ -79,9 +83,9 @@ int GameManager::Loop()
 
     while (m_Window.isOpen())
     {
-        if (m_Lifes == 0)
+        if (m_GameState == EXIT)
         {
-            m_GameState = GAMESTATE::LOOSE;
+            break;
         }
 
         sf::Time elapsed = clock.restart();

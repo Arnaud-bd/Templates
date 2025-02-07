@@ -14,4 +14,5 @@ public:
 
     void Init();
     void ChangeText(const std::string& _text);
+    void ChangeOrigin(float _x, float _y);
 };

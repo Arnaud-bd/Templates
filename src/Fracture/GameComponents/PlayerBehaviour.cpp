@@ -55,3 +55,18 @@ void PlayerBehaviour::Reset()
 {
     m_transform->setPosition(860.f, 950.f);
 }
+
+int PlayerBehaviour::GetLife()
+{
+    return m_Lifes;
+}
+
+void PlayerBehaviour::LooseLife()
+{
+    m_Lifes--;
+
+    if (m_Lifes == 0)
+    {
+        GameManager::GetInstance()->m_GameState = GameManager::GetInstance()->LOOSE;
+    }
+}

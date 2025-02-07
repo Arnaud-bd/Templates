@@ -1,5 +1,7 @@
 #include "MenuScene.h"
 #include "../GameComponents/TreeBehaviour.h"
+#include "../GameComponents/FFButtonBehaviour.h"
+#include "../GameComponents/ExitBehaviour.h"
 #include "../GameComponents/SunBehaviour.h"
 #include "../GameComponents/CastleBehaviour.h"
 #include "../GameComponents/BushBehaviour.h"
@@ -84,13 +86,13 @@ void MenuScene::Init()
 	StartGameBehaviour* buttonBehaviour = startGameButton->Add<StartGameBehaviour>();
 	buttonBehaviour->m_text->ChangeText("P l a y");
 
-	/*Transform2D* UIButton2 = CreateEntity({ 960, 600 }, { 1,1 }, 0);
-	ButtonBehaviour* buttonBehaviour2 = UIButton2->Add<ButtonBehaviour>();
+	Transform2D* ffButton = CreateEntity({ 960, 600 }, { 1,1 }, 0);
+	FFButtonBehaviour* buttonBehaviour2 = ffButton->Add<FFButtonBehaviour>();
 	buttonBehaviour2->m_text->ChangeText("F F");
 
-	Transform2D* UIButton3 = CreateEntity({ 960, 800 }, { 1,1 }, 0);
-	ButtonBehaviour* buttonBehaviour3 = UIButton3->Add<ButtonBehaviour>();
-	buttonBehaviour3->m_text->ChangeText("S K I L L   I S S U E");*/
+	Transform2D* exitButton = CreateEntity({ 960, 800 }, { 1,1 }, 0);
+	ExitBehaviour* buttonBehaviour3 = exitButton->Add<ExitBehaviour>();
+	buttonBehaviour3->m_text->ChangeText("S K I L L   I S S U E");
 
 	Transform2D* titre = CreateEntity({ 950, 100 }, { 1.5f , 1.5f }, 0);
 	SpriteRender* Titre = titre->Add<SpriteRender>();

@@ -1,5 +1,6 @@
 #include "WinScene.h"
 #include "../GameComponents/TreeBehaviour.h"
+#include "../GameComponents/ReturnToMenuBehaviour.h"
 #include "../GameComponents/SunBehaviour.h"
 #include "../GameComponents/BushBehaviour.h"
 #include "../GameComponents/CloudBehaviour.h"
@@ -76,9 +77,9 @@ void WinScene::Init()
 	Transform2D* tree3Transform = CreateEntity({ 15, 1085 }, { 1.5f , 1.5f }, 0);
 	TreeBehaviour* tree3Behaviour = tree3Transform->Add<TreeBehaviour>();
 
-	Transform2D* UIButton3 = CreateEntity({ 960, 800 }, { 1,1 }, 0);
-	ButtonBehaviour* buttonBehaviour3 = UIButton3->Add<ButtonBehaviour>();
-	buttonBehaviour3->m_text->ChangeText("M E N U");
+	Transform2D* returnButton = CreateEntity({ 960, 800 }, { 1,1 }, 0);
+	ReturnToMenuBehaviour* buttonBehaviour = returnButton->Add<ReturnToMenuBehaviour>();
+	buttonBehaviour->m_text->ChangeText("M E N U");
 
 	Transform2D* titre = CreateEntity({ 950, 100 }, { 1.5f , 1.5f }, 0);
 	SpriteRender* Titre = titre->Add<SpriteRender>();

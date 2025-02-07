@@ -25,6 +25,10 @@ void TextRender::ChangeText(const std::string& _text)
     m_text.setOrigin(m_text.getGlobalBounds().getSize().x / 2, m_text.getGlobalBounds().getSize().y / 2);
 }
 
+void TextRender::ChangeOrigin(float _x, float _y)
+{
+    m_text.setOrigin(_x, _y);
+}
 
 
 

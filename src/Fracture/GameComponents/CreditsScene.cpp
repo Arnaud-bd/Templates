@@ -1,7 +1,9 @@
-#include "LoseScene.h"
+#include "CreditsScene.h"
 #include "../GameComponents/TreeBehaviour.h"
-#include "../GameComponents/ReturnToMenuBehaviour.h"
+#include "../GameComponents/FFButtonBehaviour.h"
+#include "../GameComponents/ExitBehaviour.h"
 #include "../GameComponents/SunBehaviour.h"
+#include "../GameComponents/CastleBehaviour.h"
 #include "../GameComponents/BushBehaviour.h"
 #include "../GameComponents/CloudBehaviour.h"
 #include "../GameComponents/CloudLayer1Behaviour.h"
@@ -13,12 +15,12 @@
 #include "../GameComponents/BrickBehaviour.h"
 #include "../GameComponents/BallBehaviour.h"
 #include "../GameComponents/ScoreBehaviour.h"
-#include "../GameComponents/ButtonBehaviour.h"
+#include "../GameComponents/StartGameBehaviour.h"
 #include "../Components/Transform2D.h"
 #include "../Components/Render.h"
 #include "../Components/Collider.h"
 
-void LoseScene::Init()
+void CreditsScene::Init()
 {
 	Transform2D* sunTransform = CreateEntity({ 75.f, 50.f }, { 1.f , 1.f }, 0.f);
 	SunBehaviour* sunBehaviour = sunTransform->Add<SunBehaviour>();
@@ -46,6 +48,9 @@ void LoseScene::Init()
 
 	Transform2D* gLTransform2 = CreateEntity({ 1536, 650 }, { 1 , 1 }, 0);
 	GroundLayer1Behaviour* groundLayer1Behaviour2 = gLTransform2->Add<GroundLayer1Behaviour>();
+
+	Transform2D* castleTransform = CreateEntity({ 1400, 450.f }, { 1.f , 1.f }, 0.f);
+	CastleBehaviour* castleBehaviour = castleTransform->Add<CastleBehaviour>();
 
 	Transform2D* bush2Transform = CreateEntity({ 1350, 610 }, { 2,2 }, 0);
 	BushBehaviour* bush2Behaviour = bush2Transform->Add<BushBehaviour>();
@@ -77,7 +82,66 @@ void LoseScene::Init()
 	Transform2D* tree3Transform = CreateEntity({ 15, 1085 }, { 1.5f , 1.5f }, 0);
 	TreeBehaviour* tree3Behaviour = tree3Transform->Add<TreeBehaviour>();
 
-	Transform2D* returnButton = CreateEntity({ 960, 800 }, { 1,1 }, 0);
-	ReturnToMenuBehaviour* buttonBehaviour = returnButton->Add<ReturnToMenuBehaviour>();
-	buttonBehaviour->m_text->ChangeText("M E N U");
+	Transform2D* titre = CreateEntity({ 950, 100 }, { 1.5f , 1.5f }, 0);
+	SpriteRender* Titre = titre->Add<SpriteRender>();
+	Titre->Init("../../../res/sprite/SUPER_SMASH _BRICKS.png");
+
+	Transform2D* perso = CreateEntity({ 500, 900 }, { 1 , 1 }, 0);
+	SpriteRender* Perso = perso->Add<SpriteRender>();
+	Perso->Init("../../../res/sprite/persocool.png");
+
+	Transform2D* credits = CreateEntity({ 960, 250 }, { 1,1 }, 0);
+	TextRender* text = credits->Add<TextRender>();
+	text->Init();
+	text->ChangeText("Good luck avec votre psy Maxine T_T");
+
+	Transform2D* credits2 = CreateEntity({ 630, 350}, { 1,1 }, 0);
+	TextRender* text2 = credits2->Add<TextRender>();
+	text2->Init();
+	text2->ChangeText("Merci à Oriane pour avoir trouvé un\n bug inutile (et pour avoir bêta-testé)");
+	text2->ChangeOrigin(0.f, 0.f);
+
+	Transform2D* credits3 = CreateEntity({ 675, 500 }, { 1,1 }, 0);
+	TextRender* text3 = credits3->Add<TextRender>();
+	text3->Init();
+	text3->ChangeText("Vous savez, moi je ne crois pas\n"
+		"qu’il y ait de bonne ou de\n"
+		"mauvaise situation. Moi, si je\n"
+		"devais résumer ma vie\n"
+		"aujourd’hui avec vous, je\n"
+		"dirais que c’est d’abord des\n"
+		"rencontres. Des gens qui m’ont\n"
+		"tendu la main, peut-être à un\n"
+		"moment où je ne pouvais pas,\n"
+		"où j’étais seul chez moi. Et\n"
+		"c’est assez curieux de se dire\n"
+		"que les hasards, les\n"
+		"rencontres forgent une\n"
+		"destinée... Parce que quand on\n"
+		"a le goût de la chose, quand\n"
+		"on a le goût de la chose bien\n"
+		"faite, le beau geste, parfois\n"
+		"on ne trouve pas l’interlocuteur\n"
+		"en face je dirais, le miroir\n"
+		"qui vous aide à avancer. Alors\n"
+		"ça n’est pas mon cas, comme je\n"
+		"disais là, puisque moi au\n"
+		"contraire, j’ai pu ; et je dis\n"
+		"merci à la vie, je lui dis\n"
+		"merci, je chante la vie, je\n"
+		"danse la vie... je ne suis\n"
+		"qu’amour ! Et finalement, quand\n"
+		"des gens me disent « Mais\n"
+		"comment fais-tu pour avoir\n"
+		"cette humanité ? », je leur\n"
+		"réponds très simplement que\n"
+		"c’est ce goût de l’amour, ce\n"
+		"goût donc qui m’a poussé\n"
+		"aujourd’hui à entreprendre une\n"
+		"construction mécanique... mais\n"
+		"demain qui sait ? Peut-être\n"
+		"simplement à me mettre au\n"
+		"service de la communauté, à\n"
+		"faire le don, le don de soi.");
+	text3->ChangeOrigin(0.f, 0.f);
 }

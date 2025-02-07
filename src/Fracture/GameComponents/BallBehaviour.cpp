@@ -38,7 +38,7 @@ void BallBehaviour::Update(float _deltaTime)
 
     if (m_transform->getPosition().y >= window->getSize().y - 16.5f)
     {
-        GameManager::GetInstance()->LooseALife();
+        GameManager::GetInstance()->ResetSprites();
     }
 }
 

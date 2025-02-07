@@ -5,6 +5,8 @@
 class PlayerBehaviour : public Behaviour
 {
 	Transform2D* m_transform;
+	int m_Lifes = 3;
+
 public:
 	PlayerBehaviour();
 
@@ -13,5 +15,7 @@ public:
 	void Start() override;
 	void OnCollideEnter(Collider* _other) override;
 	void Reset();
+	int GetLife();
+	void LooseLife();
 };
 

@@ -6,7 +6,7 @@ LifeBehaviour::LifeBehaviour()
 
 void LifeBehaviour::Update(float _deltaTime)
 {
-	t->ChangeText(std::to_string(GameManager::GetInstance()->GetLife()));
+	t->ChangeText(std::to_string(GameManager::GetInstance()->GetPlayerLife()));
 }
 
 void LifeBehaviour::Awake()

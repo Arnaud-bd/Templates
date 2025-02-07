@@ -1,19 +1,19 @@
-#include "StartGameBehaviour.h"
+#include "FFButtonBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
 #include <iostream>
 
-StartGameBehaviour::StartGameBehaviour()
+FFButtonBehaviour::FFButtonBehaviour()
 {
     m_transform = nullptr;
 }
 
-StartGameBehaviour::~StartGameBehaviour()
+FFButtonBehaviour::~FFButtonBehaviour()
 {
 }
 
-void StartGameBehaviour::Awake()
+void FFButtonBehaviour::Awake()
 {
     m_sprite = Add<SpriteRender>();
     m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_depth_flat.png");
@@ -26,12 +26,12 @@ void StartGameBehaviour::Awake()
     m_text->Start();
 }
 
-void StartGameBehaviour::Start()
+void FFButtonBehaviour::Start()
 {
     m_transform = Get<Transform2D>();
-    m_setting = GameManager::GAMESTATE::LEVEL1;
+    m_setting = GameManager::GAMESTATE::CREDITS;
 }
 
-void StartGameBehaviour::OnCollideEnter(Collider* _other)
+void FFButtonBehaviour::OnCollideEnter(Collider* _other)
 {
 }

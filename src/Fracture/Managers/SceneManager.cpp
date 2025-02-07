@@ -4,6 +4,7 @@
 #include "../GameComponents/MenuScene.h"
 #include "../GameComponents/WinScene.h"
 #include "../GameComponents/LoseScene.h"
+#include "../GameComponents/CreditsScene.h"
 #include "../Components/Component.hpp"
 
 SceneManager::SceneManager()
@@ -23,6 +24,10 @@ SceneManager::SceneManager()
 	Scene* s3 = new WinScene();
 	AddScene(s3); 
 	m_ScenesList[GameManager::GAMESTATE::WIN] = s3;
+
+	Scene* s4 = new CreditsScene();
+	AddScene(s4);
+	m_ScenesList[GameManager::GAMESTATE::CREDITS] = s4;
 
 	m_CurrentScene = GameManager::GAMESTATE::START; 
 }

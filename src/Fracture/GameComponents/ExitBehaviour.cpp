@@ -1,19 +1,19 @@
-#include "StartGameBehaviour.h"
+#include "ExitBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
 #include <iostream>
 
-StartGameBehaviour::StartGameBehaviour()
+ExitBehaviour::ExitBehaviour()
 {
     m_transform = nullptr;
 }
 
-StartGameBehaviour::~StartGameBehaviour()
+ExitBehaviour::~ExitBehaviour()
 {
 }
 
-void StartGameBehaviour::Awake()
+void ExitBehaviour::Awake()
 {
     m_sprite = Add<SpriteRender>();
     m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_depth_flat.png");
@@ -26,12 +26,12 @@ void StartGameBehaviour::Awake()
     m_text->Start();
 }
 
-void StartGameBehaviour::Start()
+void ExitBehaviour::Start()
 {
     m_transform = Get<Transform2D>();
-    m_setting = GameManager::GAMESTATE::LEVEL1;
+    m_setting = GameManager::GAMESTATE::EXIT;
 }
 
-void StartGameBehaviour::OnCollideEnter(Collider* _other)
+void ExitBehaviour::OnCollideEnter(Collider* _other)
 {
 }
