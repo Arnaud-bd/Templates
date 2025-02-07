@@ -1,23 +1,17 @@
 #pragma once
 #include "../Components/Transform2D.h"
-#include "../Components/Behaviour.h"
+#include "../GameComponents/ButtonBehaviour.h"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
 
 
-class ButtonBehaviour : public Behaviour
+class StartGameBehaviour : public ButtonBehaviour
 {
-protected:
-
-	Transform2D* m_transform;
-	SpriteRender* m_sprite;
-	int m_setting;
-
 public:
 	TextRender* m_text;
 
-	ButtonBehaviour();
-	~ButtonBehaviour();
+	StartGameBehaviour();
+	~StartGameBehaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

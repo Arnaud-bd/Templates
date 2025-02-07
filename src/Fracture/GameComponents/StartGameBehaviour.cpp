@@ -1,19 +1,19 @@
-#include "ButtonBehaviour.h"
+#include "StartGameBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
 #include <iostream>
 
-ButtonBehaviour::ButtonBehaviour()
+StartGameBehaviour::StartGameBehaviour()
 {
     m_transform = nullptr;
 }
 
-ButtonBehaviour::~ButtonBehaviour()
+StartGameBehaviour::~StartGameBehaviour()
 {
 }
 
-void ButtonBehaviour::Update(float _deltaTime)
+void StartGameBehaviour::Update(float _deltaTime)
 {
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
     {
@@ -24,7 +24,7 @@ void ButtonBehaviour::Update(float _deltaTime)
         if (m_sprite->mTransform)
         {
             sf::Vector2f position = m_sprite->mTransform->getPosition();
-            sf::Vector2u size = m_sprite->GetSprite()->getTexture()->getSize(); 
+            sf::Vector2u size = m_sprite->GetSprite()->getTexture()->getSize();
 
             sf::FloatRect bounds(position.x, position.y, size.x * 1.5, size.y * 1.5);
 
@@ -36,15 +36,25 @@ void ButtonBehaviour::Update(float _deltaTime)
     }
 }
 
-void ButtonBehaviour::Awake()
-{  
+void StartGameBehaviour::Awake()
+{
+    m_sprite = Add<SpriteRender>();
+    m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_depth_flat.png");
+    m_sprite->Awake();
+    m_sprite->Start();
+
+    m_text = Add<TextRender>();
+    m_text->Init();
+    m_text->Awake();
+    m_text->Start();
 }
 
-void ButtonBehaviour::Start()
-{ 
+void StartGameBehaviour::Start()
+{
     m_transform = Get<Transform2D>();
+    m_setting = 1;
 }
 
-void ButtonBehaviour::OnCollideEnter(Collider* _other)
+void StartGameBehaviour::OnCollideEnter(Collider* _other)
 {
 }
