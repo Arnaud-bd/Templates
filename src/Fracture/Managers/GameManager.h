@@ -10,6 +10,7 @@ class GameManager
 	SceneManager* m_SceneManager;
 
 	int m_Score;
+	int m_Lifes = 3;
 
 public:
 
@@ -29,6 +30,7 @@ public:
 	void IncreaseScore(int _score);
 	int GetScore();
 	sf::RenderWindow* GetWindow();
+	void LooseALife();
 
 };
 

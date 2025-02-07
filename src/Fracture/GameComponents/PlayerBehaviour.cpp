@@ -42,3 +42,8 @@ void PlayerBehaviour::OnCollideEnter(Collider* _other)
 {
 
 }
+
+void PlayerBehaviour::Reset()
+{
+    m_transform->setPosition(860.f, 950.f);
+}
