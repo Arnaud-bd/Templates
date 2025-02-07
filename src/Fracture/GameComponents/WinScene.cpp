@@ -75,4 +75,16 @@ void WinScene::Init()
 
 	Transform2D* tree3Transform = CreateEntity({ 15, 1085 }, { 1.5f , 1.5f }, 0);
 	TreeBehaviour* tree3Behaviour = tree3Transform->Add<TreeBehaviour>();
+
+	Transform2D* UIButton3 = CreateEntity({ 960, 800 }, { 1,1 }, 0);
+	ButtonBehaviour* buttonBehaviour3 = UIButton3->Add<ButtonBehaviour>();
+	buttonBehaviour3->m_text->ChangeText("M E N U");
+
+	Transform2D* titre = CreateEntity({ 950, 100 }, { 1.5f , 1.5f }, 0);
+	SpriteRender* Titre = titre->Add<SpriteRender>();
+	Titre->Init("../../../res/sprite/SUPER_SMASH _BRICKS.png");
+
+	Transform2D* perso = CreateEntity({ 500, 900 }, { 1 , 1 }, 0);
+	SpriteRender* Perso = perso->Add<SpriteRender>();
+	Perso->Init("../../../res/sprite/persocool2.png");
 }
