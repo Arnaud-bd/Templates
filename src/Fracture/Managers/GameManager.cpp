@@ -1,7 +1,8 @@
 #include "GameManager.h"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
-#include "../GameComponents/BrickBehaviour.h"
+#include "../GameComponents/BallBehaviour.h"
+#include "../GameComponents/PlayerBehaviour.h"
 
 GameManager* GameManager::m_Instance = nullptr;
 
@@ -35,9 +36,25 @@ sf::RenderWindow* GameManager::GetWindow()
     return &m_Window;
 }
 
+void GameManager::LooseALife()
+{
+    m_Lifes--;
+    std::vector<BallBehaviour*> balls = m_SceneManager->GetCurrentScene()->GetAll<BallBehaviour>();
+    for (int i = 0; i < balls.size(); ++i)
+    {
+        balls[i]->Reset();
+    }
+
+    std::vector<PlayerBehaviour*> players = m_SceneManager->GetCurrentScene()->GetAll<PlayerBehaviour>();
+    for (int i = 0; i < players.size(); ++i)
+    {
+        players[i]->Reset();
+    }
+}
+
 int GameManager::Loop()
 {
-    m_Window.create(sf::VideoMode(), "Fracture", sf::Style::Fullscreen);
+    m_Window.create(sf::VideoMode(1000,1000), "Fracture", sf::Style::Close);
     m_Window.setPosition(sf::Vector2i(366, 0));
 
     m_SceneManager = new SceneManager();
@@ -50,6 +67,12 @@ int GameManager::Loop()
 
     while (m_Window.isOpen())
     {
+        if (m_Lifes == 0)
+        {
+            m_GameState = GAMESTATE::LOOSE;
+            exit(1);
+        }
+
         sf::Time elapsed = clock.restart();
         float deltaTime = elapsed.asSeconds();
 
