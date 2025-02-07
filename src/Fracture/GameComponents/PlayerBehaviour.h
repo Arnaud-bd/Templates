@@ -12,5 +12,6 @@ public:
 	void Awake() override;
 	void Start() override;
 	void OnCollideEnter(Collider* _other) override;
+	void Reset();
 };
 

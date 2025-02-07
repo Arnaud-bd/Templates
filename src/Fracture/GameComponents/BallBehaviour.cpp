@@ -38,8 +38,7 @@ void BallBehaviour::Update(float _deltaTime)
 
     if (m_transform->getPosition().y >= window->getSize().y - 16.5f)
     {
-        m_transform->setPosition(m_transform->getPosition().x, window->getSize().y - 16.5f);
-        m_Direction.y = -m_Direction.y;
+        GameManager::GetInstance()->LooseALife();
     }
 }
 
@@ -78,4 +77,11 @@ void BallBehaviour::OnCollideEnter(Collider* _other)
         m_Direction.y = -m_Direction.y;
         return;
     }
+}
+
+void BallBehaviour::Reset()
+{
+    m_transform->setPosition(860.f, 920.f);
+    m_Direction.x = 1.f;
+    m_Direction.y = -1.f;
 }
