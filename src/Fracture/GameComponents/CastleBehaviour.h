@@ -1,12 +1,10 @@
 #pragma once
 #include "../Components/Behaviour.h"
 
-class CloudBehaviour : public Behaviour
+class CastleBehaviour : public Behaviour
 {
-	Transform2D* m_Transform;
-
 public:
-	CloudBehaviour();
+	CastleBehaviour();
 
 	void Update(float _deltaTime) override;
 	void Awake() override;

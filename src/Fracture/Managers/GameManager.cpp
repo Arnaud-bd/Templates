@@ -55,7 +55,7 @@ void GameManager::LooseALife()
 
 int GameManager::Loop()
 {
-    m_Window.create(sf::VideoMode(1000,1000), "Fracture", sf::Style::Close);
+    m_Window.create(sf::VideoMode(), "Fracture", sf::Style::Fullscreen);
     m_Window.setPosition(sf::Vector2i(366, 0));
 
     sf::Music music;
@@ -77,7 +77,6 @@ int GameManager::Loop()
         if (m_Lifes == 0)
         {
             m_GameState = GAMESTATE::LOOSE;
-            exit(1);
         }
 
         sf::Time elapsed = clock.restart();

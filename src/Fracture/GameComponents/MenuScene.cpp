@@ -1,5 +1,7 @@
 #include "MenuScene.h"
 #include "../GameComponents/TreeBehaviour.h"
+#include "../GameComponents/SunBehaviour.h"
+#include "../GameComponents/CastleBehaviour.h"
 #include "../GameComponents/BushBehaviour.h"
 #include "../GameComponents/CloudBehaviour.h"
 #include "../GameComponents/CloudLayer1Behaviour.h"
@@ -18,6 +20,9 @@
 
 void MenuScene::Init()
 {
+	Transform2D* sunTransform = CreateEntity({ 75.f, 50.f }, { 1.f , 1.f }, 0.f);
+	SunBehaviour* sunBehaviour = sunTransform->Add<SunBehaviour>();
+
 	Transform2D* cLTransform = CreateEntity({ 512, 400 }, { 1 , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer1Behaviour = cLTransform->Add<CloudLayer1Behaviour>();
 
@@ -41,6 +46,9 @@ void MenuScene::Init()
 
 	Transform2D* gLTransform2 = CreateEntity({ 1536, 650 }, { 1 , 1 }, 0);
 	GroundLayer1Behaviour* groundLayer1Behaviour2 = gLTransform2->Add<GroundLayer1Behaviour>();
+
+	Transform2D* castleTransform = CreateEntity({ 1400, 450.f }, { 1.f , 1.f }, 0.f);
+	CastleBehaviour* castleBehaviour = castleTransform->Add<CastleBehaviour>();
 
 	Transform2D* bush2Transform = CreateEntity({ 1350, 610 }, { 2,2 }, 0);
 	BushBehaviour* bush2Behaviour = bush2Transform->Add<BushBehaviour>();

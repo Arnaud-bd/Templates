@@ -1,5 +1,6 @@
 #include "LoseScene.h"
 #include "../GameComponents/TreeBehaviour.h"
+#include "../GameComponents/SunBehaviour.h"
 #include "../GameComponents/BushBehaviour.h"
 #include "../GameComponents/CloudBehaviour.h"
 #include "../GameComponents/CloudLayer1Behaviour.h"
@@ -18,6 +19,9 @@
 
 void LoseScene::Init()
 {
+	Transform2D* sunTransform = CreateEntity({ 75.f, 50.f }, { 1.f , 1.f }, 0.f);
+	SunBehaviour* sunBehaviour = sunTransform->Add<SunBehaviour>();
+
 	Transform2D* cLTransform = CreateEntity({ 512, 400 }, { 1 , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer1Behaviour = cLTransform->Add<CloudLayer1Behaviour>();
 
