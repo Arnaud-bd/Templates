@@ -1,17 +1,30 @@
 #include "SceneManager.h"
 #include "GameManager.h"
-#include "../GameComponents/GameScene.h"
+#include "../GameComponents/GameScene1.h"
+#include "../GameComponents/MenuScene.h"
+#include "../GameComponents/WinScene.h"
+#include "../GameComponents/LoseScene.h"
 #include "../Components/Component.hpp"
 
 SceneManager::SceneManager()
 {
-	for (int i = 0; i < GameManager::GAMESTATE::LOOSE; ++i)
-	{
-		Scene* s = new GameScene();
-		AddScene(s);
-		m_ScenesList[i] = s;
-	}
-	m_CurrentScene = 0;
+	Scene* s = new GameScene1();
+	AddScene(s);
+	m_ScenesList[GameManager::GAMESTATE::LEVEL1] = s;
+
+	Scene* s1 = new MenuScene();
+	AddScene(s1);
+	m_ScenesList[GameManager::GAMESTATE::START] = s1;
+
+	Scene* s2 = new LoseScene();
+	AddScene(s2); 
+	m_ScenesList[GameManager::GAMESTATE::LOOSE] = s2;
+
+	Scene* s3 = new WinScene();
+	AddScene(s3); 
+	m_ScenesList[GameManager::GAMESTATE::WIN] = s3;
+
+	m_CurrentScene = GameManager::GAMESTATE::START; 
 }
 
 Scene* SceneManager::GetCurrentScene()

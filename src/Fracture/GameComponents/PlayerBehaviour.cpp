@@ -1,6 +1,7 @@
 #include "PlayerBehaviour.h"
 #include "../Components/Collider.h"
 #include "../Components/SpriteRender.h"
+#include "../GameComponents/BrickBehaviour.h"
 
 PlayerBehaviour::PlayerBehaviour()
 {
@@ -18,6 +19,12 @@ void PlayerBehaviour::Update(float _deltaTime)
     {
         m_transform->setPosition(m_transform->getPosition().x + 550 * -1 * _deltaTime, m_transform->getPosition().y);
     }
+
+    if (GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<BrickBehaviour>().size() <= 0)
+    {
+        GameManager::GetInstance()->m_GameState = GameManager::GAMESTATE::WIN;
+    }
+
 }
 
 void PlayerBehaviour::Awake()

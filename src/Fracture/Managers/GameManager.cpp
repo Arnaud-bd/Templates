@@ -1,6 +1,7 @@
 #include "GameManager.h"
 #include "../Components/SpriteRender.h"
 #include "../Components/TextRender.h"
+#include "../GameComponents/BrickBehaviour.h"
 
 GameManager* GameManager::m_Instance = nullptr;
 
@@ -52,17 +53,17 @@ int GameManager::Loop()
         sf::Time elapsed = clock.restart();
         float deltaTime = elapsed.asSeconds();
 
-        if (m_SceneManager->GetCurrentSceneState() != m_GameState)
-        {
-            m_SceneManager->SetCurrentSceneState(m_GameState);
-            m_SceneManager->SetCurrentScene(m_GameState);
-        }
-
         sf::Event event;
         while (m_Window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
                 m_Window.close();
+        }
+
+        if (m_SceneManager->GetCurrentSceneState() != m_GameState)
+        {
+            m_SceneManager->SetCurrentSceneState(m_GameState);
+            m_SceneManager->SetCurrentScene(m_GameState);
         }
 
         m_SceneManager->GetCurrentScene()->Update(deltaTime);

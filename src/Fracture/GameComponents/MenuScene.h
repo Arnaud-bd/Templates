@@ -1,7 +1,7 @@
 #pragma once
 #include "../GameComponents/Scene.hpp"
 
-class GameScene : public Scene
+class MenuScene : public Scene
 {
 
 

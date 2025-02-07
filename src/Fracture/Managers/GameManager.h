@@ -18,7 +18,8 @@ public:
 	enum GAMESTATE
 	{
 		START,
-		PLAY,
+		LEVEL1,
+		LEVEL2, 
 		WIN,
 		LOOSE,
 	};

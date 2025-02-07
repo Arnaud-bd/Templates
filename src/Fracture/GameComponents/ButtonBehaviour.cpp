@@ -30,7 +30,7 @@ void ButtonBehaviour::Update(float _deltaTime)
 
             if (bounds.contains(mousePos))
             {
-                inst->m_GameState = inst->PLAY;
+                inst->m_GameState = inst->GameManager::GAMESTATE::LEVEL1;
             }
         }
     }
@@ -39,7 +39,7 @@ void ButtonBehaviour::Update(float _deltaTime)
 void ButtonBehaviour::Awake()
 {
     m_sprite = Add<SpriteRender>(); 
-    m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_flat.png");   
+    m_sprite->Init("..\\..\\..\\res\\Sprite\\button_rectangle_depth_flat.png");   
     m_sprite->Awake();   
     m_sprite->Start();   
 
@@ -51,7 +51,6 @@ void ButtonBehaviour::Awake()
 
 void ButtonBehaviour::Start()
 { 
-    m_text->ChangeText("LEST FUCKING GO");  
     m_transform = Get<Transform2D>();
 }
 

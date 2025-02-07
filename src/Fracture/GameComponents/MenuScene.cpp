@@ -1,4 +1,4 @@
-#include "GameScene.h"
+#include "MenuScene.h"
 #include "../GameComponents/TreeBehaviour.h"
 #include "../GameComponents/BushBehaviour.h"
 #include "../GameComponents/CloudBehaviour.h"
@@ -16,9 +16,8 @@
 #include "../Components/Render.h"
 #include "../Components/Collider.h"
 
-void GameScene::Init()
+void MenuScene::Init()
 {
-
 	Transform2D* cLTransform = CreateEntity({ 512, 400 }, { 1 , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer1Behaviour = cLTransform->Add<CloudLayer1Behaviour>();
 
@@ -31,10 +30,10 @@ void GameScene::Init()
 	Transform2D* cL2Transform2 = CreateEntity({ 1536, 500 }, { 1 , 1 }, 0);
 	CloudLayer1Behaviour* cloudLayer2Behaviour2 = cL2Transform2->Add<CloudLayer1Behaviour>();
 
-	Transform2D* cloud1Transform = CreateEntity({ 200, 150 }, { 1,1 }, 0);
+	Transform2D* cloud1Transform = CreateEntity({ 200, 150 }, { 0.6f,0.6f }, 0);
 	CloudBehaviour* cloud1Behaviour = cloud1Transform->Add<CloudBehaviour>();
 
-	Transform2D* cloud2Transform = CreateEntity({ 1720, 150 }, { 1,1 }, 0);
+	Transform2D* cloud2Transform = CreateEntity({ 1720, 150 }, { 0.6f,0.6f }, 0);
 	CloudBehaviour* cloud2Behaviour = cloud2Transform->Add<CloudBehaviour>();
 
 	Transform2D* gLTransform = CreateEntity({ 512, 650 }, { 1 , 1 }, 0);
@@ -70,39 +69,26 @@ void GameScene::Init()
 	Transform2D* bush3Transform = CreateEntity({ 1800, 1010 }, { 2.5 , 2.5 }, 0);
 	BushBehaviour* bush3Behaviour = bush3Transform->Add<BushBehaviour>();
 
-	Transform2D* tree3Transform = CreateEntity({ 15, 1085}, { 1.5f , 1.5f }, 0);
+	Transform2D* tree3Transform = CreateEntity({ 15, 1085 }, { 1.5f , 1.5f }, 0);
 	TreeBehaviour* tree3Behaviour = tree3Transform->Add<TreeBehaviour>();
 
-	Transform2D* gameobject = CreateEntity({ 100, 950 }, { 1.5f , 1.5f }, 0);
-	PlayerBehaviour* playerBehaviour = gameobject->Add<PlayerBehaviour>();
+	Transform2D* UIButton = CreateEntity({ 960, 400 }, { 1,1 }, 0); 
+	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); 
+	buttonBehaviour->m_text->ChangeText("P l a y");
 
-	Transform2D* ball = CreateEntity({ 500, 500 }, { 1.5f , 1.5f }, 0);
-	BallBehaviour* ballBehaviour = ball->Add<BallBehaviour>();
+	Transform2D* UIButton2 = CreateEntity({ 960, 600 }, { 1,1 }, 0);
+	ButtonBehaviour* buttonBehaviour2 = UIButton2->Add<ButtonBehaviour>();
+	buttonBehaviour2->m_text->ChangeText("F F");
 
-	Transform2D* UIScore = CreateEntity({ 100, 100 }, { 1,1 }, 0);
-	ScoreBehaviour* scoreBehaviour = UIScore->Add<ScoreBehaviour>();
+	Transform2D* UIButton3 = CreateEntity({ 960, 800 }, { 1,1 }, 0);
+	ButtonBehaviour* buttonBehaviour3 = UIButton3->Add<ButtonBehaviour>();
+	buttonBehaviour3->m_text->ChangeText("S K I L L   I S S U E");
 
-	/*Transform2D* UIButton = CreateEntity({ 500, 500 }, { 1,1 }, 0);
-	ButtonBehaviour* buttonBehaviour = UIButton->Add<ButtonBehaviour>(); */
+	Transform2D* titre = CreateEntity({ 950, 100 }, { 1.5f , 1.5f }, 0);
+	SpriteRender* Titre = titre->Add<SpriteRender>();
+	Titre->Init("../../../res/sprite/SUPER_SMASH _BRICKS.png");
 
-	const int rows = 10;
-	const int cols = 20;
-	const float brickWidth = 50.0f;
-	const float brickHeight = 20.0f;
-	const float gap = 20.0f;
-
-	const float startX = 300.0f;
-	const float startY = 500.0f;
-
-	for (int row = 0; row < rows; ++row)
-	{
-		float y = startY - row * (brickHeight + gap);
-
-		for (int col = 0; col < cols; ++col)
-		{
-			float x = startX + col * (brickWidth + gap);
-			Transform2D* gameobject = CreateEntity({ x, y }, { 1, 1 }, 0);
-			BrickBehaviour* brickBehaviour = gameobject->Add<BrickBehaviour>();
-		}
-	}
+	Transform2D* perso = CreateEntity({ 500, 900 }, { 1 , 1 }, 0);
+	SpriteRender* Perso = perso->Add<SpriteRender>();
+	Perso->Init("../../../res/sprite/persocool.png");
 }
