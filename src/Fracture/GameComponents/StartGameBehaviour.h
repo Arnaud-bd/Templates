@@ -13,7 +13,6 @@ public:
 	StartGameBehaviour();
 	~StartGameBehaviour();
 
-	void Update(float _deltaTime);
 	void Awake() override;
 	void Start() override;
 

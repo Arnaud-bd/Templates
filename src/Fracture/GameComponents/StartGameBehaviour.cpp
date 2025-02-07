@@ -13,9 +13,6 @@ StartGameBehaviour::~StartGameBehaviour()
 {
 }
 
-void StartGameBehaviour::Update(float _deltaTime)
-{
-}
 
 void StartGameBehaviour::Awake()
 {
@@ -33,7 +30,7 @@ void StartGameBehaviour::Awake()
 void StartGameBehaviour::Start()
 {
     m_transform = Get<Transform2D>();
-    m_setting = 1;
+    m_setting = GameManager::GAMESTATE::LEVEL1;
 }
 
 void StartGameBehaviour::OnCollideEnter(Collider* _other)

@@ -30,7 +30,7 @@ void ButtonBehaviour::Update(float _deltaTime)
 
             if (bounds.contains(mousePos))
             {
-                inst->m_GameState = inst->LEVEL1;
+                inst->m_GameState = m_setting;
             }
         }
     }

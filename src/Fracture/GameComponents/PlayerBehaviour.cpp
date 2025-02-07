@@ -13,11 +13,11 @@ void PlayerBehaviour::Update(float _deltaTime)
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_transform->getPosition().x < window->getSize().x - 52.f)
     {
-        m_transform->setPosition(m_transform->getPosition().x + 550 * 1 * _deltaTime, m_transform->getPosition().y);
+        m_transform->setPosition(m_transform->getPosition().x + 700 * 1 * _deltaTime, m_transform->getPosition().y);
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_transform->getPosition().x > 52.f)
     {
-        m_transform->setPosition(m_transform->getPosition().x + 550 * -1 * _deltaTime, m_transform->getPosition().y);
+        m_transform->setPosition(m_transform->getPosition().x + 700 * -1 * _deltaTime, m_transform->getPosition().y);
     }
 
     if (GameManager::GetInstance()->GetSceneManager()->GetCurrentScene()->GetAll<BrickBehaviour>().size() <= 0)
